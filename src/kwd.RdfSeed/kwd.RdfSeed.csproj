@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+	  <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <Import Project="Package.props" />
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DocumentationFile>obj\kBox.Rdf.xml</DocumentationFile>
+	</PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SauceControl.InheritDoc" Version="1.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+		<ProjectReference Include="..\kwd.Rdf.Std\kwd.Rdf.Std.csproj">
+			<ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+			<IncludeAssets>kwd.Rdf.Std.dll</IncludeAssets>
+		</ProjectReference>
+  </ItemGroup>
+
+  <!--Include project reference in package-->
+  <!--Credits: http://yer.ac/blog/2019/09/05/dotnet-pack-project-reference-and-nuget-dependency/-->
+  <PropertyGroup>
+	  <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+  </PropertyGroup>
+  <Target DependsOnTargets="ResolveReferences" Name="CopyProjectReferencesToPackage">
+	  <ItemGroup>
+		  <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))"/>
+	  </ItemGroup>
+  </Target>
+
+  <!--Include project reference in package-->
+  <!--Credits: http://yer.ac/blog/2019/09/05/dotnet-pack-project-reference-and-nuget-dependency/-->
+  <PropertyGroup>
+	  <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+  </PropertyGroup>
+  <Target DependsOnTargets="ResolveReferences" Name="CopyProjectReferencesToPackage">
+	  <ItemGroup>
+		  <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+	  </ItemGroup>
+  </Target>
+</Project>

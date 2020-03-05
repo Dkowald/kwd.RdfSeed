@@ -1,0 +1,16 @@
+﻿# blank nodes.
+_:b1 <app:blank> _:b1 .
+
+#simple literal
+<http://a.example/s> <app:literal> "x" .
+
+#a uri
+<http://a.example/s> <app:uri> <http://a.example/s> .
+
+#text with language.
+<http://a.example/s> <app:text> "fred"@en .
+<http://a.example/s> <app:text> "fredo"@fr .
+
+#a number
+<http://a.example/s> <app:number> "123"^^<http://www.w3.org/2001/XMLSchema#integer> .
+

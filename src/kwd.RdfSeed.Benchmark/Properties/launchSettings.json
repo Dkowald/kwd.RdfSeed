@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "kwd.RdfSeed.Benchmark": {
+      "commandName": "Project",
+      "workingDirectory": "./"
+    }
+  }
+}

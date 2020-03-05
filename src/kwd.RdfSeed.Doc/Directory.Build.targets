@@ -1,0 +1,15 @@
+<Project>
+	<ItemGroup>
+		<WebAsset Include="Web/Index.html">
+			<Out>wwwroot/Index.html</Out>
+		</WebAsset>
+
+		<WebAsset Include="wiki/**/*">
+			<Out>wwwroot/wiki/%(RecursiveDir)/%(Filename)%(Extension)</Out>
+		</WebAsset>
+	</ItemGroup>
+
+	<Target Name="WebAssets" Inputs="@(WebAsset)" Outputs="%(WebAsset -> WebAsset.Out)" BeforeTargets="ResolveAssemblyReferences">
+		<Copy SourceFiles="%(WebAsset.FullPath)" DestinationFiles="%(Out)" />
+	</Target>
+</Project>

@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Abstract" xml:space="preserve">
+    <value>http://purl.org/dc/terms/abstract</value>
+    <comment>A summary of the resource.</comment>
+  </data>
+  <data name="AccessRights" xml:space="preserve">
+    <value>http://purl.org/dc/terms/accessRights</value>
+    <comment>Information about who access the resource or an indication of its security status.</comment>
+  </data>
+  <data name="AccrualMethod" xml:space="preserve">
+    <value>http://purl.org/dc/terms/accrualMethod</value>
+    <comment>The method by which items are added to a collection.</comment>
+  </data>
+  <data name="AccrualPeriodicity" xml:space="preserve">
+    <value>http://purl.org/dc/terms/accrualPeriodicity</value>
+    <comment>The frequency with which items are added to a collection.</comment>
+  </data>
+  <data name="AccrualPolicy" xml:space="preserve">
+    <value>http://purl.org/dc/terms/accrualPolicy</value>
+    <comment>The policy governing the addition of items to a collection.</comment>
+  </data>
+  <data name="AlternativeTitle" xml:space="preserve">
+    <value>http://purl.org/dc/terms/alternative</value>
+    <comment>An alternative name for the resource.</comment>
+  </data>
+  <data name="Audience" xml:space="preserve">
+    <value>http://purl.org/dc/terms/audience</value>
+    <comment>A class of agents for whom the resource is intended or useful.</comment>
+  </data>
+  <data name="AudienceEducationLevel" xml:space="preserve">
+    <value>http://purl.org/dc/terms/educationLevel</value>
+    <comment>A class of agents, defined in terms of progression through an educational or training context, for which the described resource is intended.</comment>
+  </data>
+  <data name="Bibliographic Citation" xml:space="preserve">
+    <value>http://purl.org/dc/terms/bibliographicCitation</value>
+    <comment>A bibliographic reference for the resource.</comment>
+  </data>
+  <data name="ConformsTo" xml:space="preserve">
+    <value>http://purl.org/dc/terms/conformsTo</value>
+    <comment>An established standard to which the described resource conforms.</comment>
+  </data>
+  <data name="Contributor" xml:space="preserve">
+    <value>http://purl.org/dc/terms/contributor</value>
+    <comment>An entity responsible for making contributions to the resource.</comment>
+  </data>
+  <data name="Coverage" xml:space="preserve">
+    <value>http://purl.org/dc/terms/coverage</value>
+    <comment>The spatial or temporal topic of the resource, spatial applicability of the resource, or jurisdiction under which the resource is relevant.</comment>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>http://purl.org/dc/terms/created</value>
+  </data>
+  <data name="Creator" xml:space="preserve">
+    <value>http://purl.org/dc/terms/creator</value>
+    <comment>An entity responsible for making the resource.</comment>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>http://purl.org/dc/terms/date</value>
+    <comment>A point or period of time associated with an event in the lifecycle of the resource.</comment>
+  </data>
+  <data name="DateAccepted" xml:space="preserve">
+    <value>http://purl.org/dc/terms/dateAccepted</value>
+    <comment>Date of acceptance of the resource.</comment>
+  </data>
+  <data name="DateAvailable" xml:space="preserve">
+    <value>http://purl.org/dc/terms/available</value>
+    <comment>Date that the resource became or will become available.</comment>
+  </data>
+  <data name="DateCopyrighted" xml:space="preserve">
+    <value>http://purl.org/dc/terms/dateCopyrighted</value>
+    <comment>Date of copyright of the resource.</comment>
+  </data>
+  <data name="DateCreated" xml:space="preserve">
+    <value>http://purl.org/dc/terms/created</value>
+    <comment>Date of creation of the resource.</comment>
+  </data>
+  <data name="DateIssued" xml:space="preserve">
+    <value>http://purl.org/dc/terms/issued</value>
+    <comment>Date of formal issuance of the resource.</comment>
+  </data>
+  <data name="DateModified" xml:space="preserve">
+    <value>http://purl.org/dc/terms/modified</value>
+    <comment>Date on which the resource was changed.</comment>
+  </data>
+  <data name="DateSubmitted" xml:space="preserve">
+    <value>http://purl.org/dc/terms/dateSubmitted</value>
+    <comment>Date of submission of the resource.</comment>
+  </data>
+  <data name="DateValid" xml:space="preserve">
+    <value>http://purl.org/dc/terms/valid</value>
+    <comment>Date (often a range) of validity of a resource.</comment>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>http://purl.org/dc/terms/description</value>
+    <comment>An account of the resource.</comment>
+  </data>
+  <data name="Extent" xml:space="preserve">
+    <value>http://purl.org/dc/terms/extent</value>
+    <comment>The size or duration of the resource.</comment>
+  </data>
+  <data name="Format" xml:space="preserve">
+    <value>http://purl.org/dc/terms/format</value>
+    <comment>The file format, physical medium, or dimensions of the resource.</comment>
+  </data>
+  <data name="HasFormat" xml:space="preserve">
+    <value>http://purl.org/dc/terms/hasFormat</value>
+    <comment>A related resource that is substantially the same as the pre-existing described resource, but in another format.</comment>
+  </data>
+  <data name="HasPart" xml:space="preserve">
+    <value>http://purl.org/dc/terms/hasPart</value>
+    <comment>A related resource that is included either physically or logically in the described resource.</comment>
+  </data>
+  <data name="HasVersion" xml:space="preserve">
+    <value>http://purl.org/dc/terms/hasVersion</value>
+    <comment>A related resource that is a version, edition, or adaptation of the described resource.</comment>
+  </data>
+  <data name="Identifier" xml:space="preserve">
+    <value>http://purl.org/dc/terms/identifier</value>
+    <comment>An unambiguous reference to the resource within a given context.</comment>
+  </data>
+  <data name="InstructionalMethod" xml:space="preserve">
+    <value>http://purl.org/dc/terms/instructionalMethod</value>
+    <comment>A process, used to engender knowledge, attitudes and skills, that the described resource is designed to support.</comment>
+  </data>
+  <data name="IsFormatOf" xml:space="preserve">
+    <value>http://purl.org/dc/terms/isFormatOf</value>
+    <comment>A pre-existing related resource that is substantially the same as the described resource, but in another format.</comment>
+  </data>
+  <data name="IsPartOf" xml:space="preserve">
+    <value>http://purl.org/dc/terms/isPartOf</value>
+    <comment>A related resource in which the described resource is physically or logically included.</comment>
+  </data>
+  <data name="IsReferencedBy" xml:space="preserve">
+    <value>http://purl.org/dc/terms/isReferencedBy</value>
+    <comment>A related resource that references, cites, or otherwise points to the described resource.</comment>
+  </data>
+  <data name="IsReplacedBy" xml:space="preserve">
+    <value>http://purl.org/dc/terms/isReplacedBy</value>
+    <comment>A related resource that supplants, displaces, or supersedes the described resource.</comment>
+  </data>
+  <data name="IsRequiredBy" xml:space="preserve">
+    <value>http://purl.org/dc/terms/isRequiredBy</value>
+    <comment>A related resource that requires the described resource to support its function, delivery, or coherence.</comment>
+  </data>
+  <data name="IsVersionOf" xml:space="preserve">
+    <value>http://purl.org/dc/terms/isVersionOf</value>
+    <comment>A related resource of which the described resource is a version, edition, or adaptation.</comment>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>http://purl.org/dc/terms/language</value>
+    <comment>A language of the resource.</comment>
+  </data>
+  <data name="License" xml:space="preserve">
+    <value>http://purl.org/dc/terms/license</value>
+    <comment>A legal document giving official permission to do something with the resource.</comment>
+  </data>
+  <data name="Mediator" xml:space="preserve">
+    <value>http://purl.org/dc/terms/mediator</value>
+    <comment>An entity that mediates access to the resource.</comment>
+  </data>
+  <data name="Medium" xml:space="preserve">
+    <value>http://purl.org/dc/terms/medium</value>
+    <comment>The material or physical carrier of the resource.</comment>
+  </data>
+  <data name="Provenance" xml:space="preserve">
+    <value>http://purl.org/dc/terms/provenance</value>
+    <comment>A statement of any changes in ownership and custody of the resource since its creation that are significant for its authenticity, integrity, and interpretation.</comment>
+  </data>
+  <data name="Publisher" xml:space="preserve">
+    <value>http://purl.org/dc/terms/publisher</value>
+    <comment>An entity responsible for making the resource available.</comment>
+  </data>
+  <data name="References" xml:space="preserve">
+    <value>http://purl.org/dc/terms/references</value>
+    <comment>A related resource that is referenced, cited, or otherwise pointed to by the described resource.</comment>
+  </data>
+  <data name="Relation" xml:space="preserve">
+    <value>http://purl.org/dc/terms/relation</value>
+    <comment>A related resource.</comment>
+  </data>
+  <data name="Replaces" xml:space="preserve">
+    <value>http://purl.org/dc/terms/replaces</value>
+    <comment>A related resource that is supplanted, displaced, or superseded by the described resource.</comment>
+  </data>
+  <data name="Requires" xml:space="preserve">
+    <value>http://purl.org/dc/terms/requires</value>
+    <comment>A related resource that is required by the described resource to support its function, delivery, or coherence.</comment>
+  </data>
+  <data name="Rights" xml:space="preserve">
+    <value>http://purl.org/dc/terms/rights</value>
+    <comment>Information about rights held in and over the resource.</comment>
+  </data>
+  <data name="RightsHolder" xml:space="preserve">
+    <value>http://purl.org/dc/terms/rightsHolder</value>
+    <comment>A person or organization owning or managing rights over the resource.</comment>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>http://purl.org/dc/terms/source</value>
+    <comment>A related resource from which the described resource is derived.</comment>
+  </data>
+  <data name="SpatialCoverage" xml:space="preserve">
+    <value>http://purl.org/dc/terms/spatial</value>
+    <comment>Spatial characteristics of the resource.</comment>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>http://purl.org/dc/terms/subject</value>
+    <comment>A topic of the resource.</comment>
+  </data>
+  <data name="TableOfContents" xml:space="preserve">
+    <value>http://purl.org/dc/terms/tableOfContents</value>
+    <comment>A list of subunits of the resource.</comment>
+  </data>
+  <data name="TemporalCoverage" xml:space="preserve">
+    <value>http://purl.org/dc/terms/temporal</value>
+    <comment>Temporal characteristics of the resource.</comment>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>http://purl.org/dc/terms/title</value>
+    <comment>A name given to the resource.</comment>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>http://purl.org/dc/terms/type</value>
+    <comment>The nature or genre of the resource.</comment>
+  </data>
+</root>

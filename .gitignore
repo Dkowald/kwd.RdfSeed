@@ -1,0 +1,10 @@
+/src/**/obj/
+/src/**/bin/
+/src/**/.vscode
+/src/**/.vs
+/src/**/*.user
+
+/src/**/App_Data/**/*
+/src/**/appsettings.*.json
+
+/src/kwd.RdfSeed.Doc/wwwroot/

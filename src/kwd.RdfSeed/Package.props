@@ -1,0 +1,27 @@
+<Project>
+	<PropertyGroup>
+		<Version>0.7.0</Version>
+		<Authors>Derek Kowald</Authors>
+		<Product>KWD Rdf Seed</Product>
+		<Title>KWD RdfSeed</Title>
+		<Description>A foundation library for RDF data managment in .NET</Description>
+		<PackageProjectUrl>https://github.com/Dkowald/kwd.RdfSeed</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Dkowald/kwd.RdfSeed.git</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageIcon>icon.png</PackageIcon>
+		<Tags>.NET Core;Rdf</Tags>
+		<PackageReleaseNotes>
+			# Earlier release
+		</PackageReleaseNotes>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="icon.png" Pack="true" PackagePath="\" />
+		<None Include="icon.svg" Pack="false" />
+	</ItemGroup>
+
+	
+
+</Project>
+

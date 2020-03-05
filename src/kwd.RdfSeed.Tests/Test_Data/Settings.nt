@@ -1,0 +1,12 @@
+﻿<app:Logger#Default> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <app:LoggingConfig> .
+<app:Logger#Default> <app:Log#Source> "Default".
+<app:Logger#Default> <app:Log#Level> "Information".
+	
+<app:Logger#Microsoft> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <app:LoggingConfig> .
+<app:Logger#Microsoft> <app:Log#Source> "Microsoft".
+<app:Logger#Microsoft> <app:Log#Level> "Warning".
+
+<app:Logger#Microsoft.Hosting.Lifetime> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <app:LoggingConfig> .
+<app:Logger#Microsoft.Hosting.Lifetime> <app:Log#Source> "Microsoft.Hosting.Lifetime".
+<app:Logger#Microsoft.Hosting.Lifetime> <app:Log#Level> "Information".
+

@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="wiki\RdfData.md" />
+    <None Remove="wiki\Serialization.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wiki\RdfData.md" />
+    <Content Include="wiki\Serialization.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WebAsset Remove="wiki\RdfData.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WebAsset Remove="wiki\QueryUpdate.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WebAsset Remove="wiki\Serialization.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WebAsset Remove="wiki\_Sidebar.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WebAsset Remove="wiki\GetStarted.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WebAsset Remove="wiki\MainFeatures.md" />
+  </ItemGroup>
+
+</Project>

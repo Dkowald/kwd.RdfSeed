@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="DublinCore\Terms.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Terms.resx</DependentUpon>
+    </Compile>
+    <Compile Update="PosixStat.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PosixStat.resx</DependentUpon>
+    </Compile>
+    <Compile Update="RDF.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RDF.resx</DependentUpon>
+    </Compile>
+    <Compile Update="RDFS.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RDFS.resx</DependentUpon>
+    </Compile>
+    <Compile Update="XMLSchema.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>XMLSchema.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="DublinCore\Terms.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Terms.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="PosixStat.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PosixStat.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="RDF.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RDF.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="RDFS.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RDFS.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="XMLSchema.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>XMLSchema.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

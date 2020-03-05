@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:heml="http://www.heml.org/schemas/2003-09-17/heml" xmlns:i="http://www.w3.org/2002/12/cal/ical#" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:x="http://www.w3.org/2002/12/cal/prod/kanzaki.co_aecc9ad85690eae3#">
+  <heml:Location rdf:about="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGbrazil">
+    <rdfs:label>Brazil</rdfs:label>
+    <geo:lat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">-15.8666666666667</geo:lat>
+    <geo:long xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">-47.9166666666667</geo:long>
+    <heml:LocationLabelSet>
+      <rdf:Alt>
+        <rdf:li>Brazil</rdf:li>
+      </rdf:Alt>
+    </heml:LocationLabelSet>
+  </heml:Location>
+  <heml:Location rdf:about="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGsalvador">
+    <rdfs:label>Salvador</rdfs:label>
+    <geo:lat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">-13</geo:lat>
+    <geo:long xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">-38.5</geo:long>
+    <heml:LocationLabelSet>
+      <rdf:Alt>
+        <rdf:li>Salvador</rdf:li>
+      </rdf:Alt>
+    </heml:LocationLabelSet>
+  </heml:Location>
+  <heml:Person rdf:about="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGcabral">
+    <rdfs:label>Pedro Alvares Cabral</rdfs:label>
+    <heml:NameSet>
+      <rdf:Bag>
+        <rdf:li>
+          <heml:Name xml:lang="en">
+            <heml:NameElements>
+              <rdf:Seq>
+                <rdf:li>Pedro Alvares Cabral</rdf:li>
+              </rdf:Seq>
+            </heml:NameElements>
+          </heml:Name>
+        </rdf:li>
+      </rdf:Bag>
+    </heml:NameSet>
+  </heml:Person>
+  <heml:Person rdf:about="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGluis">
+    <rdfs:label>Luís Alves de Lima e Silva</rdfs:label>
+    <heml:NameSet>
+      <rdf:Bag>
+        <rdf:li>
+          <heml:Name xml:lang="en">
+            <heml:NameElements>
+              <rdf:Seq>
+                <rdf:li>Luís Alves de Lima e Silva</rdf:li>
+              </rdf:Seq>
+            </heml:NameElements>
+          </heml:Name>
+        </rdf:li>
+      </rdf:Bag>
+    </heml:NameSet>
+  </heml:Person>
+  <heml:Person rdf:about="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGmello">
+    <rdfs:label>Fernando Collor de Mello</rdfs:label>
+    <heml:NameSet>
+      <rdf:Bag>
+        <rdf:li>
+          <heml:Name xml:lang="en">
+            <heml:NameElements>
+              <rdf:Seq>
+                <rdf:li>Fernando Collor de Mello</rdf:li>
+              </rdf:Seq>
+            </heml:NameElements>
+          </heml:Name>
+        </rdf:li>
+      </rdf:Bag>
+    </heml:NameSet>
+  </heml:Person>
+  <heml:Person rdf:about="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGmendes">
+    <rdfs:label>Chico Mendes</rdfs:label>
+    <heml:NameSet>
+      <rdf:Bag>
+        <rdf:li>
+          <heml:Name xml:lang="en">
+            <heml:NameElements>
+              <rdf:Seq>
+                <rdf:li>Chico Mendes</rdf:li>
+              </rdf:Seq>
+            </heml:NameElements>
+          </heml:Name>
+        </rdf:li>
+      </rdf:Bag>
+    </heml:NameSet>
+  </heml:Person>
+  <heml:Role rdf:about="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGactivist">
+    <rdfs:label>Environmental Activist</rdfs:label>
+    <heml:RoleLabelSet>
+      <rdf:Alt>
+        <rdf:li>Environmental Activist</rdf:li>
+      </rdf:Alt>
+    </heml:RoleLabelSet>
+  </heml:Role>
+  <heml:Role rdf:about="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGcaptain">
+    <rdfs:label>Captain</rdfs:label>
+    <heml:RoleLabelSet>
+      <rdf:Alt>
+        <rdf:li>Captain</rdf:li>
+      </rdf:Alt>
+    </heml:RoleLabelSet>
+  </heml:Role>
+  <heml:Role rdf:about="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGfield_marshall">
+    <rdfs:label>Field Marshall</rdfs:label>
+    <heml:RoleLabelSet>
+      <rdf:Alt>
+        <rdf:li>Field Marshall</rdf:li>
+      </rdf:Alt>
+    </heml:RoleLabelSet>
+  </heml:Role>
+  <heml:Role rdf:about="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGftpresident">
+    <rdfs:label>First President</rdfs:label>
+    <heml:RoleLabelSet>
+      <rdf:Alt>
+        <rdf:li>First President</rdf:li>
+      </rdf:Alt>
+    </heml:RoleLabelSet>
+  </heml:Role>
+  <heml:KeywordClassification rdf:about="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGaward">
+    <rdfs:label>Award given</rdfs:label>
+    <heml:LabelSet>
+      <rdf:Alt>
+        <rdf:li>Award given</rdf:li>
+      </rdf:Alt>
+    </heml:LabelSet>
+  </heml:KeywordClassification>
+  <heml:KeywordClassification rdf:about="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGdiscovery">
+    <rdfs:label>Discovery</rdfs:label>
+    <heml:LabelSet>
+      <rdf:Alt>
+        <rdf:li>Discovery</rdf:li>
+      </rdf:Alt>
+    </heml:LabelSet>
+  </heml:KeywordClassification>
+  <heml:KeywordClassification rdf:about="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGelection">
+    <rdfs:label>Election</rdfs:label>
+    <heml:LabelSet>
+      <rdf:Alt>
+        <rdf:li>Election</rdf:li>
+      </rdf:Alt>
+    </heml:LabelSet>
+  </heml:KeywordClassification>
+  <heml:KeywordClassification rdf:about="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGrevolution">
+    <rdfs:label>Revolution</rdfs:label>
+    <heml:LabelSet>
+      <rdf:Alt>
+        <rdf:li>Revolution</rdf:li>
+      </rdf:Alt>
+    </heml:LabelSet>
+  </heml:KeywordClassification>
+  <heml:Event rdf:about="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe1">
+    <rdfs:label>Portuguese Discovery of Brazil</rdfs:label>
+    <EventLabelSet xmlns="http://www.heml.org/schemas/2003-09-17/heml">
+      <rdf:Alt>
+        <rdf:li xml:lang="en">Portuguese Discovery of Brazil</rdf:li>
+      </rdf:Alt>
+    </EventLabelSet>
+    <heml:KeywordClassificationSetRef rdf:resource="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGdiscovery"/>
+    <heml:LocationRef rdf:resource="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGsalvador"/>
+    <heml:PersonWithRole rdf:parseType="Resource">
+      <heml:PersonRef rdf:resource="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGcabral"/>
+      <heml:RoleLabelSetRef rdf:resource="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGcaptain"/>
+    </heml:PersonWithRole>
+    <heml:SimpleTime rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1500</heml:SimpleTime>
+  </heml:Event>
+  <heml:Event rdf:about="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe2">
+    <rdfs:label>Farroupilha Revolution</rdfs:label>
+    <EventLabelSet xmlns="http://www.heml.org/schemas/2003-09-17/heml">
+      <rdf:Alt>
+        <rdf:li xml:lang="en">Farroupilha Revolution</rdf:li>
+      </rdf:Alt>
+    </EventLabelSet>
+    <heml:KeywordClassificationSetRef rdf:resource="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGrevolution"/>
+    <heml:LocationRef rdf:resource="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGbrazil"/>
+    <heml:PersonWithRole rdf:parseType="Resource">
+      <heml:PersonRef rdf:resource="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGluis"/>
+      <heml:RoleLabelSetRef rdf:resource="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGfield_marshall"/>
+    </heml:PersonWithRole>
+    <heml:DateRange>
+      <rdf:Seq>
+        <rdfs:label>DateRange</rdfs:label>
+        <rdf:li rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1842</rdf:li>
+        <rdf:li rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1845</rdf:li>
+      </rdf:Seq>
+    </heml:DateRange>
+  </heml:Event>
+  <heml:Event rdf:about="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe3">
+    <rdfs:label>Chico Mendes recieves Global 500 award</rdfs:label>
+    <EventLabelSet xmlns="http://www.heml.org/schemas/2003-09-17/heml">
+      <rdf:Alt>
+        <rdf:li xml:lang="en">Chico Mendes recieves Global 500 award</rdf:li>
+      </rdf:Alt>
+    </EventLabelSet>
+    <heml:KeywordClassificationSetRef rdf:resource="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGaward"/>
+    <heml:LocationRef rdf:resource="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGbrazil"/>
+    <heml:PersonWithRole rdf:parseType="Resource">
+      <heml:PersonRef rdf:resource="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGmendes"/>
+      <heml:RoleLabelSetRef rdf:resource="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGactivist"/>
+    </heml:PersonWithRole>
+    <heml:SimpleTime rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1987</heml:SimpleTime>
+  </heml:Event>
+  <heml:Event rdf:about="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe4">
+    <rdfs:label>Brazil holds first democratic election</rdfs:label>
+    <EventLabelSet xmlns="http://www.heml.org/schemas/2003-09-17/heml">
+      <rdf:Alt>
+        <rdf:li xml:lang="en">Brazil holds first democratic election</rdf:li>
+      </rdf:Alt>
+    </EventLabelSet>
+    <heml:KeywordClassificationSetRef rdf:resource="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGelection"/>
+    <heml:LocationRef rdf:resource="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGbrazil"/>
+    <heml:PersonWithRole rdf:parseType="Resource">
+      <heml:PersonRef rdf:resource="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGmello"/>
+      <heml:RoleLabelSetRef rdf:resource="http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGftpresident"/>
+    </heml:PersonWithRole>
+    <heml:SimpleTime rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1989</heml:SimpleTime>
+  </heml:Event>
+</rdf:RDF>

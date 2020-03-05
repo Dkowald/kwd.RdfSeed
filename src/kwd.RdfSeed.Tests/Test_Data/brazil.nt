@@ -1,0 +1,138 @@
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGbrazil> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.heml.org/schemas/2003-09-17/hemlLocation> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGbrazil> <http://www.w3.org/2000/01/rdf-schema#label> "Brazil" .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGbrazil> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "-15.8666666666667" .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGbrazil> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-47.9166666666667" .
+_:autos1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt> .
+_:autos1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> "Brazil" .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGbrazil> <http://www.heml.org/schemas/2003-09-17/hemlLocationLabelSet> _:autos1 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGsalvador> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.heml.org/schemas/2003-09-17/hemlLocation> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGsalvador> <http://www.w3.org/2000/01/rdf-schema#label> "Salvador" .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGsalvador> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "-13" .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGsalvador> <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-38.5" .
+_:autos2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt> .
+_:autos2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> "Salvador" .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGsalvador> <http://www.heml.org/schemas/2003-09-17/hemlLocationLabelSet> _:autos2 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGcabral> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.heml.org/schemas/2003-09-17/hemlPerson> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGcabral> <http://www.w3.org/2000/01/rdf-schema#label> "Pedro Alvares Cabral" .
+_:autos3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag> .
+_:autos4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.heml.org/schemas/2003-09-17/hemlName> .
+_:autos5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq> .
+_:autos5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> "Pedro Alvares Cabral" .
+_:autos4 <http://www.heml.org/schemas/2003-09-17/hemlNameElements> _:autos5 .
+_:autos3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> _:autos4 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGcabral> <http://www.heml.org/schemas/2003-09-17/hemlNameSet> _:autos3 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGluis> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.heml.org/schemas/2003-09-17/hemlPerson> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGluis> <http://www.w3.org/2000/01/rdf-schema#label> "Lu\u00EDs Alves de Lima e Silva" .
+_:autos6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag> .
+_:autos7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.heml.org/schemas/2003-09-17/hemlName> .
+_:autos8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq> .
+_:autos8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> "Lu\u00EDs Alves de Lima e Silva" .
+_:autos7 <http://www.heml.org/schemas/2003-09-17/hemlNameElements> _:autos8 .
+_:autos6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> _:autos7 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGluis> <http://www.heml.org/schemas/2003-09-17/hemlNameSet> _:autos6 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGmello> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.heml.org/schemas/2003-09-17/hemlPerson> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGmello> <http://www.w3.org/2000/01/rdf-schema#label> "Fernando Collor de Mello" .
+_:autos9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag> .
+_:autos10 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.heml.org/schemas/2003-09-17/hemlName> .
+_:autos11 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq> .
+_:autos11 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> "Fernando Collor de Mello" .
+_:autos10 <http://www.heml.org/schemas/2003-09-17/hemlNameElements> _:autos11 .
+_:autos9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> _:autos10 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGmello> <http://www.heml.org/schemas/2003-09-17/hemlNameSet> _:autos9 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGmendes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.heml.org/schemas/2003-09-17/hemlPerson> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGmendes> <http://www.w3.org/2000/01/rdf-schema#label> "Chico Mendes" .
+_:autos12 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag> .
+_:autos13 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.heml.org/schemas/2003-09-17/hemlName> .
+_:autos14 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq> .
+_:autos14 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> "Chico Mendes" .
+_:autos13 <http://www.heml.org/schemas/2003-09-17/hemlNameElements> _:autos14 .
+_:autos12 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> _:autos13 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGmendes> <http://www.heml.org/schemas/2003-09-17/hemlNameSet> _:autos12 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGactivist> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.heml.org/schemas/2003-09-17/hemlRole> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGactivist> <http://www.w3.org/2000/01/rdf-schema#label> "Environmental Activist" .
+_:autos15 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt> .
+_:autos15 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> "Environmental Activist" .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGactivist> <http://www.heml.org/schemas/2003-09-17/hemlRoleLabelSet> _:autos15 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGcaptain> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.heml.org/schemas/2003-09-17/hemlRole> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGcaptain> <http://www.w3.org/2000/01/rdf-schema#label> "Captain" .
+_:autos16 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt> .
+_:autos16 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> "Captain" .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGcaptain> <http://www.heml.org/schemas/2003-09-17/hemlRoleLabelSet> _:autos16 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGfield_marshall> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.heml.org/schemas/2003-09-17/hemlRole> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGfield_marshall> <http://www.w3.org/2000/01/rdf-schema#label> "Field Marshall" .
+_:autos17 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt> .
+_:autos17 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> "Field Marshall" .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGfield_marshall> <http://www.heml.org/schemas/2003-09-17/hemlRoleLabelSet> _:autos17 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGftpresident> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.heml.org/schemas/2003-09-17/hemlRole> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGftpresident> <http://www.w3.org/2000/01/rdf-schema#label> "First President" .
+_:autos18 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt> .
+_:autos18 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> "First President" .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGftpresident> <http://www.heml.org/schemas/2003-09-17/hemlRoleLabelSet> _:autos18 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGaward> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.heml.org/schemas/2003-09-17/hemlKeywordClassification> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGaward> <http://www.w3.org/2000/01/rdf-schema#label> "Award given" .
+_:autos19 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt> .
+_:autos19 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> "Award given" .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGaward> <http://www.heml.org/schemas/2003-09-17/hemlLabelSet> _:autos19 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGdiscovery> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.heml.org/schemas/2003-09-17/hemlKeywordClassification> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGdiscovery> <http://www.w3.org/2000/01/rdf-schema#label> "Discovery" .
+_:autos20 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt> .
+_:autos20 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> "Discovery" .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGdiscovery> <http://www.heml.org/schemas/2003-09-17/hemlLabelSet> _:autos20 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGelection> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.heml.org/schemas/2003-09-17/hemlKeywordClassification> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGelection> <http://www.w3.org/2000/01/rdf-schema#label> "Election" .
+_:autos21 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt> .
+_:autos21 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> "Election" .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGelection> <http://www.heml.org/schemas/2003-09-17/hemlLabelSet> _:autos21 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGrevolution> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.heml.org/schemas/2003-09-17/hemlKeywordClassification> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGrevolution> <http://www.w3.org/2000/01/rdf-schema#label> "Revolution" .
+_:autos22 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt> .
+_:autos22 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> "Revolution" .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGrevolution> <http://www.heml.org/schemas/2003-09-17/hemlLabelSet> _:autos22 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.heml.org/schemas/2003-09-17/hemlEvent> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe1> <http://www.w3.org/2000/01/rdf-schema#label> "Portuguese Discovery of Brazil" .
+_:autos23 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt> .
+_:autos23 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> "Portuguese Discovery of Brazil"@en .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe1> <http://www.heml.org/schemas/2003-09-17/hemlEventLabelSet> _:autos23 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe1> <http://www.heml.org/schemas/2003-09-17/hemlKeywordClassificationSetRef> <http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGdiscovery> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe1> <http://www.heml.org/schemas/2003-09-17/hemlLocationRef> <http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGsalvador> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe1> <http://www.heml.org/schemas/2003-09-17/hemlPersonWithRole> _:autos24 .
+_:autos24 <http://www.heml.org/schemas/2003-09-17/hemlPersonRef> <http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGcabral> .
+_:autos24 <http://www.heml.org/schemas/2003-09-17/hemlRoleLabelSetRef> <http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGcaptain> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe1> <http://www.heml.org/schemas/2003-09-17/hemlSimpleTime> "1500"^^<http://www.w3.org/2001/XMLSchema#gYear> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.heml.org/schemas/2003-09-17/hemlEvent> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe2> <http://www.w3.org/2000/01/rdf-schema#label> "Farroupilha Revolution" .
+_:autos25 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt> .
+_:autos25 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> "Farroupilha Revolution"@en .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe2> <http://www.heml.org/schemas/2003-09-17/hemlEventLabelSet> _:autos25 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe2> <http://www.heml.org/schemas/2003-09-17/hemlKeywordClassificationSetRef> <http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGrevolution> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe2> <http://www.heml.org/schemas/2003-09-17/hemlLocationRef> <http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGbrazil> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe2> <http://www.heml.org/schemas/2003-09-17/hemlPersonWithRole> _:autos26 .
+_:autos26 <http://www.heml.org/schemas/2003-09-17/hemlPersonRef> <http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGluis> .
+_:autos26 <http://www.heml.org/schemas/2003-09-17/hemlRoleLabelSetRef> <http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGfield_marshall> .
+_:autos27 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq> .
+_:autos27 <http://www.w3.org/2000/01/rdf-schema#label> "DateRange" .
+_:autos27 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> "1842"^^<http://www.w3.org/2001/XMLSchema#gYear> .
+_:autos27 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_2> "1845"^^<http://www.w3.org/2001/XMLSchema#gYear> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe2> <http://www.heml.org/schemas/2003-09-17/hemlDateRange> _:autos27 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.heml.org/schemas/2003-09-17/hemlEvent> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe3> <http://www.w3.org/2000/01/rdf-schema#label> "Chico Mendes recieves Global 500 award" .
+_:autos28 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt> .
+_:autos28 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> "Chico Mendes recieves Global 500 award"@en .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe3> <http://www.heml.org/schemas/2003-09-17/hemlEventLabelSet> _:autos28 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe3> <http://www.heml.org/schemas/2003-09-17/hemlKeywordClassificationSetRef> <http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGaward> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe3> <http://www.heml.org/schemas/2003-09-17/hemlLocationRef> <http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGbrazil> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe3> <http://www.heml.org/schemas/2003-09-17/hemlPersonWithRole> _:autos29 .
+_:autos29 <http://www.heml.org/schemas/2003-09-17/hemlPersonRef> <http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGmendes> .
+_:autos29 <http://www.heml.org/schemas/2003-09-17/hemlRoleLabelSetRef> <http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGactivist> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe3> <http://www.heml.org/schemas/2003-09-17/hemlSimpleTime> "1987"^^<http://www.w3.org/2001/XMLSchema#gYear> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.heml.org/schemas/2003-09-17/hemlEvent> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe4> <http://www.w3.org/2000/01/rdf-schema#label> "Brazil holds first democratic election" .
+_:autos30 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt> .
+_:autos30 <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> "Brazil holds first democratic election"@en .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe4> <http://www.heml.org/schemas/2003-09-17/hemlEventLabelSet> _:autos30 .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe4> <http://www.heml.org/schemas/2003-09-17/hemlKeywordClassificationSetRef> <http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGelection> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe4> <http://www.heml.org/schemas/2003-09-17/hemlLocationRef> <http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGbrazil> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe4> <http://www.heml.org/schemas/2003-09-17/hemlPersonWithRole> _:autos31 .
+_:autos31 <http://www.heml.org/schemas/2003-09-17/hemlPersonRef> <http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGmello> .
+_:autos31 <http://www.heml.org/schemas/2003-09-17/hemlRoleLabelSetRef> <http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGftpresident> .
+<http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGe4> <http://www.heml.org/schemas/2003-09-17/hemlSimpleTime> "1989"^^<http://www.w3.org/2001/XMLSchema#gYear> .
