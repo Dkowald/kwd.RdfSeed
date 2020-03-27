@@ -9,27 +9,27 @@
         Invalid,
 
         /// <summary>Whitespace</summary>
-        ws,
+        Whitespace,
 
         /// <summary>Uri token</summary>
-        uri,
+        Uri,
 
         /// <summary>String literal</summary>
-        literal,
+        Literal,
 
         /// <summary>a . the triple end character.</summary>
-        dot,
+        Dot,
 
         /// <summary>A comment line.</summary>
-        comment,
+        Comment,
 
         /// <summary>A blank label</summary>
-        blank,
+        Blank,
 
         /// <summary>data type uri</summary>
-        dataType,
+        DataType,
 
         /// <summary>text language specifier</summary>
-        lang
+        Language
     }
 }

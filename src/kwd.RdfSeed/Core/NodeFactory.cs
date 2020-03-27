@@ -46,12 +46,10 @@ namespace kwd.RdfSeed.Core
             
             public int Next() => ++_counter;
 
-            public ScopeCounter SkipTo(int? value)
+            public void SkipTo(int? value)
             {
                 if(value.HasValue)
                     _counter = value.Value;
-
-                return this;
             }
         }
 

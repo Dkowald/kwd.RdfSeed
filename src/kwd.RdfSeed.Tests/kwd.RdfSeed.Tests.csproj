@@ -21,9 +21,5 @@
 	<ItemGroup>
 		<PackageReference Include="kwd.CoreUtil" Version="1.0.0" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="RdfModel\" />
-	</ItemGroup>
-
+	
 </Project>

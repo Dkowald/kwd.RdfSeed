@@ -28,7 +28,9 @@ namespace kwd.RdfSeed.Tests.Samples
 			Assert.ThrowsException<UriObjectNodeNotSupported>(() => rdf.New(search));
 
 			//but can create with explicit extension.
-			var n1 = rdf.Uri(search);
+			var uri = rdf.Uri(search);
+
+			Assert.AreEqual(uri.Uri, search.ToString(), "Same value");
 		}
 
 		[TestMethod]

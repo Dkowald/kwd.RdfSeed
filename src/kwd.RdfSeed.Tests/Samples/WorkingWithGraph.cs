@@ -1,7 +1,9 @@
 ﻿using System.Linq;
+
 using kwd.RdfSeed.Query;
 using kwd.RdfSeed.Serialize.NTriple;
 using kwd.RdfSeed.Tests.TestHelpers;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace kwd.RdfSeed.Tests.Samples
@@ -70,9 +72,21 @@ namespace kwd.RdfSeed.Tests.Samples
 			
 			//Add 2 graphs.
 			rdf.Update.From(rdf.BlankGraph("g1"))
-				.Let(out var g1)
+				.Let(out var g1Id)
 				.Then()
-				.From(rdf.BlankGraph("g2")).Let(out var g2);
+				.From(rdf.BlankGraph("g2")).Let(out var g2Id);
+
+			//update g1
+			var g1 = rdf.GetFullGraph(g1Id);
+
+			var g2 = rdf.GetFullGraph(g2Id);
+			g2.Assert(g2.Uri("app:me"), g2.Uri("app:update"), g2.New(true));
+
+			Assert.AreEqual(0, g1.Query.Count,
+				"Update in graph2 not reflected in graph1 snapshot");
+
+			Assert.AreEqual(1, g2.Query.Count, 
+				"Update in graph 2 is available");
 		}
 	}
 }

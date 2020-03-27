@@ -16,9 +16,9 @@ namespace kwd.RdfSeed.Serialize.NTriple
     public class NTripleParse
     {
         private readonly Graph _graph;
-        private Node<UriOrBlank>? Subject;
-        private UriNode? Predicate;
-        private Node? Object;
+        private Node<UriOrBlank>? _subject;
+        private UriNode? _predicate;
+        private Node? _object;
 
         private class ObjectParts
         {
@@ -54,33 +54,33 @@ namespace kwd.RdfSeed.Serialize.NTriple
             if(token.Type == NTripleTokenType.Invalid)
                 throw new Exception("Invalid token");
 
-            if(token.Type == NTripleTokenType.ws)return;
+            if(token.Type == NTripleTokenType.Whitespace)return;
 
-            if(token.Type == NTripleTokenType.comment)return;
+            if(token.Type == NTripleTokenType.Comment)return;
             
-            if (Subject is null)
+            if (_subject is null)
             {
-                if (token.Type == NTripleTokenType.uri)
+                if (token.Type == NTripleTokenType.Uri)
                 {
                     IsValidUri(token.Value);
-                    Subject = _graph.Uri(ValueEncoder.UriUnEscape(token.Value));
+                    _subject = _graph.Uri(ValueEncoder.UriUnEscape(token.Value));
                     return;
                 }
 
-                if (token.Type == NTripleTokenType.blank)
+                if (token.Type == NTripleTokenType.Blank)
                 {
-                    Subject = _graph.Blank(token.Value);
+                    _subject = _graph.Blank(token.Value);
                     return;
                 }
                 throw new Exception("Expected uri for subject");
             }
 
-            if (Predicate is null)
+            if (_predicate is null)
             {
-                if (token.Type == NTripleTokenType.uri)
+                if (token.Type == NTripleTokenType.Uri)
                 {
 	                IsValidUri(token.Value);
-                    Predicate = _graph.Uri(
+                    _predicate = _graph.Uri(
                         ValueEncoder.UriUnEscape(token.Value));
                     return;
                 }
@@ -88,24 +88,24 @@ namespace kwd.RdfSeed.Serialize.NTriple
                 throw new Exception("Expected uri for predicate");
             }
 
-            if (Object is null)
+            if (_object is null)
             {
-                if (token.Type == NTripleTokenType.uri)
+                if (token.Type == NTripleTokenType.Uri)
                 {
                     IsValidUri(token.Value);
-                    Object = _graph.Uri(token.Value);
+                    _object = _graph.Uri(token.Value);
                     return;
                 }
 
-                if (token.Type == NTripleTokenType.blank)
+                if (token.Type == NTripleTokenType.Blank)
                 {
-                    Object = _graph.Blank(token.Value);
+                    _object = _graph.Blank(token.Value);
                     return;
                 }
 
                 if (_objectParts is null)
                 {
-                    if(token.Type != NTripleTokenType.literal)
+                    if(token.Type != NTripleTokenType.Literal)
                         throw new Exception("expected literal for object value");
                     _objectParts = new ObjectParts
                     {
@@ -114,14 +114,14 @@ namespace kwd.RdfSeed.Serialize.NTriple
                     return;
                 }
                 
-                if (token.Type == NTripleTokenType.lang)
+                if (token.Type == NTripleTokenType.Language)
                 {
 	                IsValidLanguageTag(token.Value);
                     _objectParts.Lang = new string(token.Value);
                     return;
                 }
 
-                if (token.Type == NTripleTokenType.dataType)
+                if (token.Type == NTripleTokenType.DataType)
                 {
                     IsValidUri(token.Value);
                     _objectParts.ValueType = new string(token.Value);
@@ -129,25 +129,25 @@ namespace kwd.RdfSeed.Serialize.NTriple
                 }
             }
 
-            if(token.Type != NTripleTokenType.dot)
+            if(token.Type != NTripleTokenType.Dot)
                 throw new Exception("Expected dot to end triple.");
 
-            if (Object is null && _objectParts !=  null)
+            if (_object is null && _objectParts !=  null)
             {
-                Object = _graph.NewNode(_objectParts.Literal,
+                _object = _graph.NewNode(_objectParts.Literal,
                     ValueEncoder.UriUnEscape(_objectParts.ValueType),
                     _objectParts.Lang);
             }
 
-            if(Object is null)
+            if(_object is null)
                 throw new Exception("Expected object to be created");
 
-            _graph.Assert(Subject, Predicate, Object);
+            _graph.Assert(_subject, _predicate, _object);
 
             //reset for next triple.
-            Subject = null;
-            Predicate = null;
-            Object = null;
+            _subject = null;
+            _predicate = null;
+            _object = null;
             _objectParts = null;
         }
 

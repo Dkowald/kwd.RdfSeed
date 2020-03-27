@@ -25,7 +25,7 @@ namespace kwd.RdfSeed.Tests.Serialize.NTriple
 
 			var token = NTripleTokenizer.NextToken(data);
 
-			Assert.AreEqual(NTripleTokenType.blank, token.Type);
+			Assert.AreEqual(NTripleTokenType.Blank, token.Type);
 			Assert.IsTrue(token.Value.SequenceEqual("g"));
 			Assert.IsTrue(token.Rest.SequenceEqual("."));
 		}
@@ -55,7 +55,7 @@ namespace kwd.RdfSeed.Tests.Serialize.NTriple
 		{
 			var token = NTripleTokenizer.NextToken("_:blank ");
 			Assert.IsTrue(token.Value.SequenceEqual("blank"));
-			Assert.AreEqual(NTripleTokenType.blank, token.Type);
+			Assert.AreEqual(NTripleTokenType.Blank, token.Type);
 			Assert.IsTrue(token.Rest.SequenceEqual(" "));
 
 			token = NTripleTokenizer.NextToken("_:blank");
@@ -71,16 +71,16 @@ namespace kwd.RdfSeed.Tests.Serialize.NTriple
 			var tokens = new List<(string value, NTripleTokenType type)>();
 
 			var expected = new List<(string value, NTripleTokenType type)>
-						{ ("s1", NTripleTokenType.uri),
-								("p1", NTripleTokenType.uri),
-								("Literal", NTripleTokenType.literal),
-								("en", NTripleTokenType.lang),
-								(".", NTripleTokenType.dot)};
+						{ ("s1", NTripleTokenType.Uri),
+								("p1", NTripleTokenType.Uri),
+								("Literal", NTripleTokenType.Literal),
+								("en", NTripleTokenType.Language),
+								(".", NTripleTokenType.Dot)};
 
 			var t = NTripleTokenizer.NextToken(data);
 			while (t.Type != NTripleTokenType.Invalid)
 			{
-				if (t.Type != NTripleTokenType.ws)
+				if (t.Type != NTripleTokenType.Whitespace)
 					tokens.Add((new string(t.Value), t.Type));
 
 				t = NTripleTokenizer.NextToken(t.Rest);

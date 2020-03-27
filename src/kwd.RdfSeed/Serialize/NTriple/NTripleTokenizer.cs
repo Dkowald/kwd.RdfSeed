@@ -15,10 +15,10 @@ namespace kwd.RdfSeed.Serialize.NTriple
 			if (data.IsEmpty) return Token.Invalid(data);
 
 			if (char.IsWhiteSpace(data[0])) return new Token(
-				NTripleTokenType.ws, data.Slice(0, 1), data.Slice(1));
+				NTripleTokenType.Whitespace, data.Slice(0, 1), data.Slice(1));
 
 			if (data[0] == '.') return new Token(
-				 NTripleTokenType.dot, data.Slice(0, 1), data.Slice(1));
+				 NTripleTokenType.Dot, data.Slice(0, 1), data.Slice(1));
 
 			int end;
 
@@ -42,7 +42,7 @@ namespace kwd.RdfSeed.Serialize.NTriple
 				if (end < 0) return Token.Invalid(data);
 
 				return new Token(
-						NTripleTokenType.literal,
+						NTripleTokenType.Literal,
 						data.Slice(1, end - 1),
 						data.Slice(end + 1)
 					);
@@ -55,7 +55,7 @@ namespace kwd.RdfSeed.Serialize.NTriple
 
 				var val = ValueEncoder.LiteralUnEscape(data.Slice(1, end - 1));
 				return new Token(
-						NTripleTokenType.uri, val, data.Slice(end + 1));
+						NTripleTokenType.Uri, val, data.Slice(end + 1));
 			}
 
 			if (data[0] == '#')
@@ -75,7 +75,7 @@ namespace kwd.RdfSeed.Serialize.NTriple
 				var value = end == data.Length ? 
 					data.Slice(1) : data.Slice(1, end);
 
-				return new Token(NTripleTokenType.comment,
+				return new Token(NTripleTokenType.Comment,
 					value, remainder);
 			}
 
@@ -104,7 +104,7 @@ namespace kwd.RdfSeed.Serialize.NTriple
 					: ReadOnlySpan<char>.Empty;
 
 				return new Token(
-					NTripleTokenType.blank,
+					NTripleTokenType.Blank,
 					data.Slice(2, end-1), rest);
 			}
 
@@ -114,7 +114,7 @@ namespace kwd.RdfSeed.Serialize.NTriple
 				if (end < 0) return Token.Invalid(data);
 
 				return new Token(
-					NTripleTokenType.lang,
+					NTripleTokenType.Language,
 					data.Slice(1, end - 1),
 					data.Slice(end)
 					);
@@ -125,7 +125,7 @@ namespace kwd.RdfSeed.Serialize.NTriple
 				end = data.IndexOf('>');
 				if (end < 0) return Token.Invalid(data);
 
-				return new Token(NTripleTokenType.dataType,
+				return new Token(NTripleTokenType.DataType,
 					data.Slice(3, end - 3),
 					data.Slice(end + 1));
 			}

@@ -3,7 +3,7 @@ using kwd.RdfSeed.Core.Nodes.Builtin;
 
 namespace kwd.RdfSeed.Builder
 {
-    interface IQuadBuilderContext
+	internal interface IQuadBuilderContext
     {
         IRdfData Rdf { get; }
 

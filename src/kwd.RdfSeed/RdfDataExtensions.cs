@@ -10,7 +10,7 @@ namespace kwd.RdfSeed
     /// <summary>
     /// Extensions for <see cref="IRdfData"/>.
     /// </summary>
-    public static class IRdfDataExtension
+    public static class RdfDataExtensions
     {
         #region Graph
         /// <summary>

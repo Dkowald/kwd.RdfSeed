@@ -40,7 +40,7 @@ namespace kwd.RdfSeed.Tests.Samples
 			GetMyFavorites();
 	    }
 
-	    public void NewBlankProfile()
+	    private void NewBlankProfile()
 	    {
 		    var rdf = RdfDataFactory.CreateNoLock();
 		    _data.EnsureDelete();
@@ -54,7 +54,7 @@ namespace kwd.RdfSeed.Tests.Samples
 		    new NTripleFile(_data).Write(g).Wait();
 	    }
 
-        public void AddBasicProfile()
+	    private void AddBasicProfile()
 	    {
 		    var rdf = RdfDataFactory.CreateNoLock();
             if(!_data.Exists())throw new Exception("Call start first");
@@ -74,8 +74,8 @@ namespace kwd.RdfSeed.Tests.Samples
 
             file.Write(g).Wait();
 	    }
-		
-	    public void AddFavorites()
+
+        private void AddFavorites()
 	    {
 		    var rdf = RdfDataFactory.CreateNoLock();
 
@@ -103,7 +103,7 @@ namespace kwd.RdfSeed.Tests.Samples
             file.Write(g).Wait();
 	    }
 
-        public void GetBasicProfile()
+	    private void GetBasicProfile()
 	    {
 		    var rdf = RdfDataFactory.CreateNoLock();
 
@@ -122,9 +122,11 @@ namespace kwd.RdfSeed.Tests.Samples
 			var welcome = 
 				$"Hello {bestName}, " +
 			    $"your profile was last updated {lastModified.ToShortDateString()}";
+
+			Assert.IsTrue(welcome.Contains("ME"), "Has my alt name");
 	    }
 
-		public void GetMyFavorites()
+	    private void GetMyFavorites()
 	    {
 		    var rdf = RdfDataFactory.CreateNoLock();
 

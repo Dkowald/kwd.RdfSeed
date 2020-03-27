@@ -7,7 +7,7 @@ namespace kwd.RdfSeed.Core
     /// <summary>
     /// Extensions for <see cref="INodeFactory"/>
     /// </summary>
-    public static class IBasicNodeFactoryExtensions
+    public static class BasicNodeFactoryExtensions
     {
 	    /// <summary>
 	    /// Create new <see cref="UriNode"/> from <see cref="Uri"/>.

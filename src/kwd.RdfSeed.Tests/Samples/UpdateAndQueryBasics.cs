@@ -13,7 +13,7 @@ namespace kwd.RdfSeed.Tests.Samples
 	[TestClass]
 	public class UpdateAndQueryBasics
 	{
-		public Node<UriOrBlank> LoadSampleData(IRdfData data, Node<UriOrBlank> g)
+		private Node<UriOrBlank> LoadSampleData(IRdfData data, Node<UriOrBlank> g)
 		{
 			var me = data.Uri("x:me");
 			var link = data.Uri("a:linkTo");
@@ -27,13 +27,6 @@ namespace kwd.RdfSeed.Tests.Samples
 				.With(name).Add(data.Literal("My Name"));
 
 			return g;
-		}
-
-		[TestMethod]
-		public void FluentUpdates()
-		{
-			var rdf = RdfDataFactory.CreateNoLock();
-
 		}
 
 		[TestMethod]
