@@ -12,7 +12,7 @@
 		<PackageIcon>icon.png</PackageIcon>
 		<Tags>.NET Core;Rdf</Tags>
 		<PackageReleaseNotes>
-			# Earlier release
+			# Early release
 		</PackageReleaseNotes>
 	</PropertyGroup>
 
@@ -20,8 +20,6 @@
 		<None Include="icon.png" Pack="true" PackagePath="\" />
 		<None Include="icon.svg" Pack="false" />
 	</ItemGroup>
-
-	
 
 </Project>
 
