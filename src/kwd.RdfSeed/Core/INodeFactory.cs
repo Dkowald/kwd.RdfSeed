@@ -23,14 +23,11 @@ namespace kwd.RdfSeed.Core
 		/// <summary>
 		/// A Blank that is scoped to itself.
 		/// </summary>
-		BlankNode BlankGraph(ReadOnlySpan<char> label);
+		BlankNode BlankSelf(ReadOnlySpan<char> label);
 
 		/// <summary>
 		/// A blank scoped to self, with auto label
 		/// </summary>
-		BlankNode BlankGraph();
-
-		/// <summary>General statistics for diagnostics</summary>
-		NodeFactoryStats Stats();
+		BlankNode BlankSelf();
 	}
 }

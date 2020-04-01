@@ -10,7 +10,7 @@ namespace kwd.RdfSeed
 	public interface IRdfData : INodeFactory
 	{
 		/// <summary>Get a copy of all the current quads.</summary>
-		IReadOnlyCollection<Quad> Query { get; }
+		IReadOnlyList<Quad> Query { get; }
 
 		/// <summary>
 		/// Create a new <see cref="RdfBuilder"/> to
@@ -26,11 +26,11 @@ namespace kwd.RdfSeed
 		/// <summary>Id for Default graph</summary>
 		UriNode Default { get; }
 
-		/// <summary>The current set of all graph id's</summary>
-		/// <remarks>
-		/// <see cref="System"/> then <see cref="Default"/>
-		/// are always first.
-		/// </remarks>
+		/// <summary>
+		/// The current set of all graph id's.
+		/// This ALWAYS starts with the <see cref="System"/>, then
+		/// <see cref="Default"/> graphs.
+		/// </summary>
 		Node<UriOrBlank>[] GraphIds { get; }
 
 		/// <summary>
@@ -39,10 +39,17 @@ namespace kwd.RdfSeed
 		/// </summary>
 		Graph GetGraph(Node<UriOrBlank> graphId, params Node<UriOrBlank>[] other);
 
+		/// <summary>
+		/// Get quads for the given graph id(s).
+		/// Quads are returned in same order as graph Id's
+		/// </summary>
+		Quad[] GraphData(params Node<UriOrBlank>[] graphIds);
+
 		/// <summary>Assert / add a quad.</summary>
 		IRdfData Assert(Node<UriOrBlank> graph, 
 			Node<UriOrBlank> sub, 
-			UriNode predicate, Node val);
+			UriNode predicate, Node val,
+			out Quad quad);
 
 		/// <summary>Retract / remove a set of quads</summary>
 		/// <returns>The number of quads actually removed</returns>

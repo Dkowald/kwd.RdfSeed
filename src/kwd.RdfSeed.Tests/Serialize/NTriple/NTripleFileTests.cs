@@ -65,7 +65,7 @@ namespace kwd.RdfSeed.Tests.Serialize.NTriple
             var target = new NTripleFile(Files.AppDataDir.GetFile(
                 nameof(NTripleFileTests), nameof(WriteTripleData)+".nt"));
 
-            var g = rdf.BlankGraph("g1");
+            var g = rdf.BlankSelf("g1");
 
             rdf.Assert(g, 
                 rdf.Uri("x:sub1"),
@@ -85,7 +85,7 @@ namespace kwd.RdfSeed.Tests.Serialize.NTriple
             var rdf = new RdfData(new NodeFactory());
 
             var g = rdf.GetFullGraph("graph:1")
-	            .Assert(rdf.Uri("sub1:/"), rdf.Uri("pred1:/"), rdf.Literal("basic text"));
+	            .Assert(rdf.Uri("sub1:/"), rdf.Uri("pred1:/"), rdf.New("basic text"));
             
             file.Directory.EnsureDelete();
             var t = new NTripleFile(file);

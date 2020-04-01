@@ -4,18 +4,14 @@ using kwd.RdfSeed.Core.Nodes;
 
 namespace kwd.RdfSeed.Tests.Samples.Rdf
 {
-    /// <summary>
-    /// A custom node type for File info.
-    /// </summary>
+    /// <summary>A custom node type for File info.</summary>
     public class FileInfoNodeMap : NodeMap<FileInfo>
     {
         /// <summary>A unique Value type string for nodes</summary>
         public const string TypeString = "app:FileInfoNode";
 
-        /// <summary>
-        /// Helper to create ValueString from <see cref="FileInfo"/>
-        /// </summary>
-        public static string ValueStringFor(FileInfo file)
+        /// <summary>Helper to create ValueString from <see cref="FileInfo"/></summary>
+        private static string ValueStringFor(FileInfo file)
             => file.FullName.ToLower();
 
         /// <summary>Create file info node.</summary>

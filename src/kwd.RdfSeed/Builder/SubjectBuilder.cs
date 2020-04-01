@@ -2,6 +2,7 @@
 using System.Linq;
 
 using kwd.Rdf.Std;
+using kwd.RdfSeed.Core;
 using kwd.RdfSeed.Core.Nodes;
 using kwd.RdfSeed.Core.Nodes.Builtin;
 

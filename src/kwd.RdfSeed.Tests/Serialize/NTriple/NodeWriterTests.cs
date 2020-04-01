@@ -19,7 +19,7 @@ namespace kwd.RdfSeed.Tests.Serialize.NTriple
 		    var rdf = new RdfData(new NodeFactory());
 		    
 		    var g1 = rdf.GetBlankGraph();
-		    g1.Assert(rdf.Uri("bad:link"), rdf.Uri("app:test"), rdf.BlankGraph("other"));
+		    g1.Assert(rdf.Uri("bad:link"), rdf.Uri("app:test"), rdf.BlankSelf("other"));
 
 		    var file = Files.AppDataDir.GetFile(nameof(NodeWriterTests),
 			    nameof(WriteWithCrossGraphBlank) + ".nt")
@@ -44,7 +44,7 @@ namespace kwd.RdfSeed.Tests.Serialize.NTriple
 
             g.Assert(g.Blank("g"),
                 rdf.Uri("app:test"), 
-                rdf.Literal("Literal\rMultiline\\"));
+                rdf.New("Literal\rMultiline\\"));
 
             var target = new NodeWriter(g);
 

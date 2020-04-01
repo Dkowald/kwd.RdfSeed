@@ -17,24 +17,27 @@ namespace kwd.RdfSeed.Tests.Samples
 	{
 		private readonly FileInfo _sampleData = Files.TestData.Brazil;
 
+		private const string SubjectId = "http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGbrazil";
+
 		[TestMethod]
 		public void Go()
 		{
 			//Create a store
 			var rdf = RdfDataFactory.CreateDefault();
 
-			//load some data.
-			//  new graph node.
+			//new graph node.
 			var sample = rdf.GetBlankGraph("SampleDataGraph");
+
+			//load some data.
 			//  n-triple file read / write.
 			new NTripleFile(_sampleData).Read(sample).Wait();
 
 			//find some data.
-			var brazil = rdf.Uri("http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xmlFRAGbrazil");
+			var brazil = rdf.Uri(SubjectId);
 			var name = sample.Query
 				.For(brazil)
 				.With(rdf, RDFS.Label)
-				.SelectValues<string>()
+				.Get<string>()
 				.FirstOrNull();
 
 			Assert.IsNotNull(name);
@@ -44,7 +47,7 @@ namespace kwd.RdfSeed.Tests.Samples
 			sample.Update
 				.For(brazil)
 				.With(haveVisited)
-				.Assert(false);
+				.Add(false);
 
 			//Save some data
 			new NTripleFile(Files.AppDataDir.GetFile("Updated.nt"))

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 using kwd.RdfSeed.Core.Nodes;
 using kwd.RdfSeed.Core.Nodes.Builtin;
@@ -52,22 +51,15 @@ namespace kwd.RdfSeed.Core
 		}
 
 		/// <inheritdoc />
-		public BlankNode BlankGraph(ReadOnlySpan<char> label)
+		public BlankNode BlankSelf(ReadOnlySpan<char> label)
 		{
-			lock (_locker){ return _inner.BlankGraph(label);}
+			lock (_locker){ return _inner.BlankSelf(label);}
 		}
 
 		/// <inheritdoc />
-		public BlankNode BlankGraph()
+		public BlankNode BlankSelf()
 		{
-			lock (_locker){ return _inner.BlankGraph();}
-		}
-
-		/// <inheritdoc />
-		public IReadOnlyCollection<NodeMap> Mappings
-		{
-			get
-			{ lock (_locker) { return _inner.Mappings; } }
+			lock (_locker){ return _inner.BlankSelf();}
 		}
 
 		/// <inheritdoc />

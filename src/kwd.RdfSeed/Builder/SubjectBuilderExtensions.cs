@@ -4,14 +4,13 @@ using System.Linq;
 using kwd.RdfSeed.Core.Nodes;
 using kwd.RdfSeed.Core.Nodes.Builtin;
 using kwd.RdfSeed.Errors;
-using kwd.RdfSeed.TypedNodes;
 
 namespace kwd.RdfSeed.Builder
 {
-    /// <summary>
-    /// Extensions for <see cref="SubjectBuilder"/>.
-    /// </summary>
-    public static class SubjectBuilderExtensions
+	/// <summary>
+	/// Extensions for <see cref="SubjectBuilder"/>.
+	/// </summary>
+	public static class SubjectBuilderExtensions
     {
 	    /// <summary>Select predicate with Uri.</summary>
 	    public static PredicateBuilder With(this SubjectBuilder self, ReadOnlySpan<char> predicate, out UriNode node)
@@ -30,7 +29,7 @@ namespace kwd.RdfSeed.Builder
         /// <summary>Adds literal items as a RDFS list set (return last item)</summary>
         /// <returns><see cref="SubjectBuilder"/> for last list item</returns>
         public static SubjectBuilder List(this SubjectBuilder self, params string[] literals)
-	        => self.List(literals.Select(x => self.Rdf().Literal(x))
+	        => self.List(literals.Select(x => self.Rdf().New(x))
 		        .Cast<Node>().ToArray()
 	        );
 

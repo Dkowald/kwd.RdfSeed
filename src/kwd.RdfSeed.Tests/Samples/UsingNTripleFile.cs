@@ -1,22 +1,22 @@
 ﻿using System.IO;
 
 using kwd.CoreUtil.FileSystem;
+using kwd.RdfSeed.Core;
 using kwd.RdfSeed.Serialize.NTriple;
 using kwd.RdfSeed.Tests.TestHelpers;
-using kwd.RdfSeed.TypedNodes;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace kwd.RdfSeed.Tests.Samples
 {
 	[TestClass]
-	public class StoringData
+	public class UsingNTripleFile
 	{
 		private FileInfo SampleFile()
 		{
 			var file = 
 				Files.TestData.Sample1
-				.CopyTo(Files.AppDataDir.Get(nameof(StoringData)), true);
+				.CopyTo(Files.AppDataDir.Get(nameof(UsingNTripleFile)), true);
 
 			return file;
 		}
@@ -24,6 +24,7 @@ namespace kwd.RdfSeed.Tests.Samples
 		[TestMethod]
 		public void LoadAFile()
 		{
+			//Load a sample N-triple file
 			var rdf = RdfDataFactory.CreateNoLock();
 
 			var file = SampleFile();
@@ -40,15 +41,16 @@ namespace kwd.RdfSeed.Tests.Samples
 		[TestMethod]
 		public void WriteAFile()
 		{
+			//Write a sample N-triple file
 			var file = Files.AppDataDir.GetFile(
-				nameof(StoringData), nameof(WriteAFile) + ".nt");
+				nameof(UsingNTripleFile), nameof(WriteAFile) + ".nt");
 
 			file.EnsureDelete();
 
 			var rdf = RdfDataFactory.CreateNoLock();
 			var g = rdf.GetBlankGraph();
 
-			g.Assert(g.Uri("test:sub"), g.Uri("test:pred"), g.Literal("a name"));
+			g.Assert(g.Uri("test:sub"), g.Uri("test:pred"), g.New("a name"));
 
 			new NTripleFile(file).Write(g).Wait();
 

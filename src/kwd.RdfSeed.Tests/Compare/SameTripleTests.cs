@@ -13,11 +13,11 @@ namespace kwd.RdfSeed.Tests.Compare
 		{
 			var f = new NodeFactory();
 
-			var t1 = new Quad(f.BlankGraph("g1"), 
+			var t1 = new Quad(f.BlankSelf("g1"), 
 				f.Uri("x:s1"), f.Uri("x:/p1"), 
 				f.New("0", "xs:int"));
 
-			var t2 = new Quad(f.BlankGraph("g2"),
+			var t2 = new Quad(f.BlankSelf("g2"),
 				t1.Subject, t1.Predicate, t1.Object);
 
 			var target = new SameTriple();

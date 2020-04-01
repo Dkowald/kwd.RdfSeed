@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 
 using kwd.CoreUtil.FileSystem;
+using kwd.RdfSeed.Core;
 using kwd.RdfSeed.Tests.Samples.Rdf;
 using kwd.RdfSeed.Tests.TestHelpers;
 
@@ -35,7 +36,7 @@ namespace kwd.RdfSeed.Tests.Samples.DataFetcher
 			var g = await loader.Load(file);
 
 			var preUpdate = g.Query.Count;
-
+			
 			g.Assert(g.Blank(), g.Uri("app:isTest"), g.New(true));
 			await loader.Save(g);
 			g.Clear();
@@ -52,7 +53,7 @@ namespace kwd.RdfSeed.Tests.Samples.DataFetcher
 			var loader = new RdfDataFetcher(_rdf);
 			var g = await loader.Load(Files.TestData.Sample1, Files.TestData.Brazil);
 
-			Assert.AreEqual(1, g.Other.Count, "Loaded the data files.");
+			Assert.AreEqual(1, g.Other.Length, "Loaded the data files.");
 		}
 
 		[TestMethod]

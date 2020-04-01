@@ -24,7 +24,7 @@ namespace kwd.RdfSeed.Builder
 		/// <summary>New <see cref="Graph"/> with auto-blank node</summary>
 		public static GraphBuilder FromBlank(this RdfBuilder self, out BlankNode node)
 		{
-			node = self.Rdf().BlankGraph();
+			node = self.Rdf().BlankSelf();
 
 			return self.From(node);
 		}
@@ -32,7 +32,7 @@ namespace kwd.RdfSeed.Builder
 		/// <summary>New <see cref="Graph"/> with labeled-blank node</summary>
 		public static GraphBuilder FromBlank(this RdfBuilder self, string label, out BlankNode node)
 		{
-			node = self.Rdf().BlankGraph(label);
+			node = self.Rdf().BlankSelf(label);
 
 			return self.From(node);
 		}
@@ -40,7 +40,7 @@ namespace kwd.RdfSeed.Builder
 		/// <summary>New <see cref="Graph"/> with labeled-blank node</summary>
 		public static GraphBuilder FromBlank(this RdfBuilder self, ReadOnlySpan<char> label, out BlankNode node)
 		{
-			node = self.Rdf().BlankGraph(label);
+			node = self.Rdf().BlankSelf(label);
 
 			return self.From(node);
 		}

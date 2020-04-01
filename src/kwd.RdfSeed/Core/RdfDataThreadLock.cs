@@ -35,6 +35,66 @@ namespace kwd.RdfSeed.Core
 			_inner = inner;
 		}
 
+		#region IRdfData
+
+		/// <inheritdoc />
+		public RdfBuilder Update => new RdfBuilder(this);
+
+		/// <inheritdoc />
+		public IReadOnlyList<Quad> Query
+		{ get{ lock (_locker){return _inner.Query;}} }
+		
+		/// <inheritdoc />
+		public UriNode System => _inner.System;
+
+		/// <inheritdoc />
+		public UriNode Default => _inner.Default;
+
+		/// <inheritdoc />
+		public Node<UriOrBlank>[] GraphIds 
+		{ get{lock (_locker){return _inner.GraphIds;}} }
+
+		/// <inheritdoc />
+		public Quad[] GraphData(params Node<UriOrBlank>[] graphIds)
+		{
+			lock (_locker)
+			{ return _inner.GraphData(graphIds); }
+		}
+
+		/// <inheritdoc />
+		public IRdfData Assert(Node<UriOrBlank> graph, 
+			Node<UriOrBlank> sub, UriNode predicate, Node val, out Quad q)
+		{
+			lock (_locker)
+			{
+				_inner.Assert(graph, sub, predicate, val, out q);
+				return this;
+			}
+		}
+
+		/// <inheritdoc />
+		public Graph GetGraph(Node<UriOrBlank> graphId, 
+			params Node<UriOrBlank>[] other)
+		{
+			lock (_locker)
+			{ return new Graph(this, graphId, other); }
+		}
+
+		/// <inheritdoc />
+		public int Retract(params Quad[] quads)
+		{
+			lock (_locker)
+			{ return _inner.Retract(quads); }
+		}
+
+		/// <inheritdoc />
+		public int Replace(IEnumerable<Quad> newQuads, IEnumerable<Quad> oldQuads)
+		{
+			lock (_locker)
+			{ return _inner.Replace(newQuads, oldQuads); }
+		}
+		#endregion
+
 		#region INodeFactory
 
 		/// <inheritdoc />
@@ -58,68 +118,16 @@ namespace kwd.RdfSeed.Core
 			=> _inner.Uri(uriValue);
 
 		/// <inheritdoc />
-		public BlankNode BlankGraph(ReadOnlySpan<char> label)
-			=> _inner.BlankGraph(label);
+		public BlankNode BlankSelf(ReadOnlySpan<char> label)
+			=> _inner.BlankSelf(label);
 
 		/// <inheritdoc />
-		public BlankNode BlankGraph()
-			=> _inner.BlankGraph();
-
-		/// <inheritdoc />
-		public IReadOnlyCollection<NodeMap> Mappings => _inner.Mappings;
+		public BlankNode BlankSelf()
+			=> _inner.BlankSelf();
 
 		/// <inheritdoc />
 		public NodeFactoryStats Stats() => _inner.Stats();
-		#endregion
-
-		#region IRdfData
-
-		/// <inheritdoc />
-		public RdfBuilder Update => _inner.Update;
-
-		/// <inheritdoc />
-		public IReadOnlyCollection<Quad> Query
-		{ get{ lock (_locker){return _inner.Query;}} }
-
-		/// <inheritdoc />
-		public UriNode System => _inner.System;
-
-		/// <inheritdoc />
-		public UriNode Default => _inner.Default;
-
-		/// <inheritdoc />
-		public IRdfData Assert(Node<UriOrBlank> graph, 
-			Node<UriOrBlank> sub, UriNode predicate, Node val)
-		{
-			lock (_locker)
-			{ return _inner.Assert(graph, sub, predicate, val); }
-		}
-
-		/// <inheritdoc />
-		public Node<UriOrBlank>[] GraphIds 
-		{ get{lock (_locker){return _inner.GraphIds;}} }
-
-		/// <inheritdoc />
-		public Graph GetGraph(Node<UriOrBlank> graphId, 
-			params Node<UriOrBlank>[] other)
-		{
-			lock (_locker)
-			{ return _inner.GetGraph(graphId, other); }
-		}
-
-		/// <inheritdoc />
-		public int Retract(params Quad[] quads)
-		{
-			lock (_locker)
-			{ return _inner.Retract(quads); }
-		}
-
-		/// <inheritdoc />
-		public int Replace(IEnumerable<Quad> newQuads, IEnumerable<Quad> oldQuads)
-		{
-			lock (_locker)
-			{ return _inner.Replace(newQuads, oldQuads); }
-		}
+		
 		#endregion
 	}
 }

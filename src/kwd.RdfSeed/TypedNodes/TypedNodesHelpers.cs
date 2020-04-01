@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using kwd.Rdf.Std;
 using kwd.RdfSeed.Core;
 using kwd.RdfSeed.Core.Nodes;
@@ -53,6 +54,7 @@ namespace kwd.RdfSeed.TypedNodes
         /// <summary>
         /// Create a string literal node.
         /// </summary>
+        [Obsolete("just use the literal node mapper")]
         public static Node<string> Literal(this IBasicNodeFactory self, ReadOnlySpan<char> value)
             => (Node<string>)self.New(value, XMLSchema.String);
 
@@ -68,14 +70,8 @@ namespace kwd.RdfSeed.TypedNodes
         /// </summary>
         public static Node TextOrLiteral(this IBasicNodeFactory self,
             ReadOnlySpan<char> value, ReadOnlySpan<char> language)
-            => language.IsEmpty ? (Node)self.Literal(value) 
+            => language.IsEmpty ? (Node)self.New(new string(value)) 
                 : self.Text(value, language);
-
-        /// <summary>
-        /// Literal text node with optional language
-        /// </summary>
-        public static Node L(this IBasicNodeFactory self, string literal, string? language = null) 
-            => self.TextOrLiteral(literal, language);
-        #endregion
+		#endregion
     }
 }

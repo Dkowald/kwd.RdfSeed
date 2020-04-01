@@ -69,12 +69,12 @@ namespace kwd.RdfSeed.Tests.Serialize.NTriple
         {
             var data = "<x:/s1> <x:/p1> \"Blurb\" .";
 
-            var store = new RdfData(new NodeFactory());
-            var g = store.GetFullGraph("x:g1");
+            var rdf = new RdfData(new NodeFactory());
+            var g = rdf.GetFullGraph("x:g1");
 
             var token = NTripleTokenizer.NextToken(data);
 
-            var parse = new NTripleParse(store.GetFullGraph("x:g1"));
+            var parse = new NTripleParse(rdf.GetFullGraph("x:g1"));
 
             while (!token.IsEnd)
             {

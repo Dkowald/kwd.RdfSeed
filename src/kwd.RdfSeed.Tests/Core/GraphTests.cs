@@ -1,12 +1,13 @@
 ﻿using System.Linq;
+
+using kwd.RdfSeed.Builder;
 using kwd.RdfSeed.Core;
 using kwd.RdfSeed.Core.Nodes;
 using kwd.RdfSeed.Core.Nodes.Builtin;
 using kwd.RdfSeed.Query;
-using kwd.RdfSeed.TypedNodes;
 using kwd.RdfSeed.Util;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using kwd.RdfSeed.Builder;
 
 namespace kwd.RdfSeed.Tests.Core
 {
@@ -18,13 +19,13 @@ namespace kwd.RdfSeed.Tests.Core
 	    {
 		    var rdf = new RdfData(new NodeFactory());
 			
-		    var g1 = rdf.GetGraph(rdf.BlankGraph());
+		    var g1 = rdf.GetGraph(rdf.BlankSelf());
 		    g1.Assert(rdf.Uri("app:test"), rdf.Uri("app:name"),
-			    rdf.Literal("baseName"));
+			    rdf.New("baseName"));
 
-		    var g2 = rdf.GetGraph(rdf.BlankGraph());
+		    var g2 = rdf.GetGraph(rdf.BlankSelf());
 		    g2.Assert(rdf.Uri("app:test"),rdf.Uri("app:name"),
-				rdf.Literal("mainName"));
+				rdf.New("mainName"));
 
 		    var target = rdf.GetGraph(g2.Id, g1.Id);
 
@@ -33,7 +34,7 @@ namespace kwd.RdfSeed.Tests.Core
 
 			//Get the name value.
 			var name = names
-				.SelectValues<string>()
+				.Get<string>()
 				.FirstOrNull();
 			    
 		    Assert.AreEqual("mainName", name, "Main graph is first in the query");
@@ -44,7 +45,7 @@ namespace kwd.RdfSeed.Tests.Core
 	    {
 		    var rdf = new RdfData(new NodeFactory());
 
-		    var g1 = rdf.GetGraph(rdf.BlankGraph());
+		    var g1 = rdf.GetGraph(rdf.BlankSelf());
 		    var g2 = rdf.GetFullGraph("app:test");
 
 		    var who = rdf.Uri("app:who");
@@ -55,7 +56,7 @@ namespace kwd.RdfSeed.Tests.Core
             
             //b1 has name fred.
             var name = rdf.Uri("app:name");
-		    g2.Assert(b1, name, rdf.Literal("Fred"));
+		    g2.Assert(b1, name, rdf.New("Fred"));
 
             //Now find via cross graph query.
             var otherG = g1.Query.Single(x => 
@@ -66,7 +67,7 @@ namespace kwd.RdfSeed.Tests.Core
             var myName = rdf.GetGraph(otherG).Query.Where(x =>
 		            x.Subject == b1 &&
 		            x.Predicate == name)
-	            .SelectValues<string>()
+	            .Get<string>()
 	            .Single();
 
             Assert.AreEqual("Fred", myName);
@@ -79,12 +80,12 @@ namespace kwd.RdfSeed.Tests.Core
 
             data.Update.From("sys:/data/", out _)
 	            .For("sub:s1", out _)
-	            .With("x:/p1", out _).Assert(123);
+	            .With("x:/p1", out _).Add(123);
 
-            var g = data.GetGraph(data.BlankGraph())
+            var g = data.GetGraph(data.BlankSelf())
 	            .Assert(data.Uri("x:/s1"),
 		            data.Uri("p:/1"),
-		            data.Literal("text"));
+		            data.New("text"));
 
             Assert.AreEqual(2, data.Query.Count, "have the nodes");
 
@@ -100,15 +101,15 @@ namespace kwd.RdfSeed.Tests.Core
 
             var rdf = new RdfData(f);
 
-            var g1 = f.BlankGraph();
-            var g2 = f.BlankGraph();
+            var g1 = f.BlankSelf();
+            var g2 = f.BlankSelf();
 
             var graphPreUpdates = rdf.GetGraph(g1, g2);
 			
 			//add directly via rdf data.
 			var sub = rdf.Uri("x:/s1");
 			var pred = rdf.Uri("x:/p1");
-			var val = rdf.Literal("text");
+			var val = rdf.New("text");
             rdf.Assert(g1, sub, pred, val);
             rdf.Assert(g2, sub, pred, val);
 

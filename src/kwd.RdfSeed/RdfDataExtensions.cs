@@ -12,6 +12,11 @@ namespace kwd.RdfSeed
     /// </summary>
     public static class RdfDataExtensions
     {
+	    /// <summary>Assert / add a quad.</summary>
+	    public static IRdfData Assert(this IRdfData rdf, Node<UriOrBlank> graph,
+		    Node<UriOrBlank> sub,
+		    UriNode predicate, Node val)
+		    => rdf.Assert(graph, sub, predicate, val, out _);
         #region Graph
         /// <summary>
         /// A set of quads ordered by graph.
@@ -39,7 +44,7 @@ namespace kwd.RdfSeed
 
         /// <summary>Get new blank graph; has all the current data</summary>
         public static Graph GetBlankGraph(this IRdfData store, string? id = null)
-            => store.GetGraph(store.BlankGraph(id), store.GraphIds);
+            => store.GetGraph(store.BlankSelf(id), store.GraphIds);
 
         /// <summary>Get default graph with all data</summary>
         public static Graph GetDefault(this IRdfData store)

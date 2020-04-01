@@ -96,9 +96,6 @@ namespace kwd.RdfSeed.Core
         public NodeFactory()
             :this(TypedNodesHelpers.AllNodeMappings()){}
 
-        /// <summary>Report the current number of nodes.</summary>
-        public int NodeCount => _nodes.Count;
-
         #region INodeFactory
 
         /// <inheritdoc />
@@ -267,9 +264,9 @@ namespace kwd.RdfSeed.Core
         }
         
         /// <inheritdoc />
-        public BlankNode BlankGraph(ReadOnlySpan<char> label)
+        public BlankNode BlankSelf(ReadOnlySpan<char> label)
         {
-            if (label.IsEmpty) return BlankGraph();
+            if (label.IsEmpty) return BlankSelf();
             
             var valueString = BlankNode.ValueStringFromLabel(label);
             
@@ -301,7 +298,7 @@ namespace kwd.RdfSeed.Core
         }
 
         /// <inheritdoc />
-        public BlankNode BlankGraph()
+        public BlankNode BlankSelf()
         {
             var valueString = BlankGraphPrefix + Counter(null).Next();
 
@@ -321,18 +318,11 @@ namespace kwd.RdfSeed.Core
 		        _nodes.Count(x =>
 			        x is BlankNode b &&
 			        (b.Label.StartsWith(BlankNodePrefix) ||
-			         b.Label.StartsWith(BlankGraphPrefix)))
-	        );
+			         b.Label.StartsWith(BlankGraphPrefix))),
+                _nodeMaps);
 
 	        return stats;
         }
-
-        #endregion
-
-        #region INodeMapper
-
-        /// <inheritdoc />
-        public IReadOnlyCollection<NodeMap> Mappings => _nodeMaps;
 
         #endregion
 

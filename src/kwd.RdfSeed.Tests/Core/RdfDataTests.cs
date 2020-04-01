@@ -14,7 +14,7 @@ namespace kwd.RdfSeed.Tests.Core
 		{
 			var rdf = new RdfData(new NodeFactory());
 
-			var g1 = rdf.BlankGraph("test");
+			var g1 = rdf.BlankSelf("test");
 			rdf.Assert(g1, rdf.Blank(g1), rdf.Uri("a:pred"), rdf.New(123));
 
 			var graphs = rdf.GraphIds;

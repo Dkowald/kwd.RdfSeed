@@ -38,6 +38,9 @@ namespace kwd.RdfSeed.Core
 	        _factory = factory ?? new NodeFactory();
             
             _data = new List<Quad>();
+
+            System = _factory.Uri(DefaultSysGraphUri);
+            Default = _factory.Uri(DefaultGraphUri);
         }
         
         #region IRdfData
@@ -45,39 +48,52 @@ namespace kwd.RdfSeed.Core
         public RdfBuilder Update => new RdfBuilder(this);
 
         /// <inheritdoc />
-        public IReadOnlyCollection<Quad> Query =>
-	        _data.ToList();
-
+        public IReadOnlyList<Quad> Query => _data.ToArray();
+        
         /// <inheritdoc />
-        public UriNode System => _factory.Uri(DefaultSysGraphUri);
+        public UriNode System { get; }
 
         /// <inheritdoc/>
-        public UriNode Default => _factory.Uri(DefaultGraphUri);
+        public UriNode Default { get; }
 
         /// <inheritdoc/>
         public Node<UriOrBlank>[] GraphIds =>
 	        new[] {System, Default}
 		        .Union(_data.Select(x => x.Graph).ToArray())
 		        .Distinct().ToArray();
+        
+        /// <inheritdoc />
+        public Quad[] GraphData(params Node<UriOrBlank>[] graphIds)
+        {
+	        if (!graphIds.Any()) return Array.Empty<Quad>();
+
+	        var main = graphIds.First();
+	        var items = _data.Where(x => x.Graph == main);
+
+	        foreach (var g in graphIds.Skip(1))
+	        {
+		        items = items.Union(
+			        _data.Where(x => x.Graph == g)
+		        );
+	        }
+
+	        return items.ToArray();
+        }
 
         /// <inheritdoc/>
-        public IRdfData Assert(Node<UriOrBlank> graph, Node<UriOrBlank> sub, UriNode predicate, Node val)
+        public IRdfData Assert(Node<UriOrBlank> graph, Node<UriOrBlank> sub, UriNode predicate, Node val
+        , out Quad quad)
         {
-	        var item = new Quad(graph, sub, predicate, val); 
+	        quad = new Quad(graph, sub, predicate, val); 
 
-	        _data.Add(item);
+	        _data.Add(quad);
             
 	        return this;
-	        //return Add(graph, sub, predicate, val);
         }
 
         /// <inheritdoc />
         public Graph GetGraph(Node<UriOrBlank> id, params Node<UriOrBlank>[] withOther)
-        {
-	        return new Graph(this, id, 
-                _data.Where(x => x.Graph == id),
-		        withOther);
-        }
+			=> new Graph(this, id, withOther);
 
         /// <inheritdoc />
         public int Retract(params Quad[] items)
@@ -135,16 +151,13 @@ namespace kwd.RdfSeed.Core
 	        => _factory.Blank(scope, label);
 
         /// <inheritdoc />
-        public BlankNode BlankGraph(ReadOnlySpan<char> label)
-	        => _factory.BlankGraph(label);
+        public BlankNode BlankSelf(ReadOnlySpan<char> label)
+	        => _factory.BlankSelf(label);
 
         /// <inheritdoc />
-        public BlankNode BlankGraph()
-	        => _factory.BlankGraph();
+        public BlankNode BlankSelf()
+	        => _factory.BlankSelf();
         
-        /// <inheritdoc />
-        public IReadOnlyCollection<NodeMap> Mappings => _factory.Mappings;
-
         /// <inheritdoc />
         public NodeFactoryStats Stats() => _factory.Stats();
         #endregion

@@ -4,6 +4,8 @@
   * [[Node Factory|NodeFactory]]
   * [[RdfData|RdfData]]
   * [[Graph|Graph]]
-  * [[Query and Update|QueryUpdate]]
+  * [[Query Extensions|Query]]
+  * [[Fluent Update|FluentUpdate]]
+  * [[Serialization|Serialization]]
 
 * [[Alternates|Alternates]]

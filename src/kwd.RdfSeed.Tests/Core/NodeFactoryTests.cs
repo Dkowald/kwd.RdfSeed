@@ -45,10 +45,10 @@ namespace kwd.RdfSeed.Tests.Core
 	            .Union(rdf.Query.Where(x => x.Object is BlankNode)
 	                    .Select(x => x.Object))
 	            .Distinct().Count();
-	            
-		    var count1 = f.NodeCount - blankCount;
+	    
+		    var count1 = f.Stats().TotalNodes - blankCount;
 		    new NTripleFile(f2).Read(g2).Wait();
-		    var count2 = f.NodeCount -blankCount*2;
+		    var count2 = f.Stats().TotalNodes - blankCount*2;
 
             Assert.AreEqual(count1, count2, "No extra nodes, except blanks.");
 	    }
@@ -60,8 +60,8 @@ namespace kwd.RdfSeed.Tests.Core
 
 		    var g = rdf.GetBlankGraph();
 
-		    new NTripleFile(Files.TestData.Brazil)
-			    .Read(g).Wait();
+            new NTripleFile(Files.TestData.Brazil)
+                .Read(g).Wait();
 
 		    var stats = rdf.Stats();
 
@@ -78,47 +78,30 @@ namespace kwd.RdfSeed.Tests.Core
 	    public void LoadFromMultipleThreads()
 	    {
 		    var rdf = RdfDataFactory.CreateDefault();
+		    var data = Files.TestDataDir.GetFile("brazil.nt");
 
-            var data = Files.TestDataDir.GetFile("brazil.nt");
-
-            var f1 = data.CopyTo(
-	            Files.AppDataDir.GetFile(
-		            nameof(NodeFactoryTests), "f1.nt"), true);
-            var g1 = rdf.GetBlankGraph("g1");
-
-            var f2 = data.CopyTo(
-	            Files.AppDataDir.GetFile(
-		            nameof(NodeFactoryTests), "f2.nt"), true);
-            var g2 = rdf.GetBlankGraph("g2");
-
-            var f3 = data.CopyTo(
-	            Files.AppDataDir.GetFile(
-		            nameof(NodeFactoryTests), "f3.nt"), true);
-            var g3 = rdf.GetBlankGraph("g3");
-
-            var f4 = data.CopyTo(
-	            Files.AppDataDir.GetFile(
-		            nameof(NodeFactoryTests), "f4.nt"), true);
-            var g4 = rdf.GetBlankGraph("g4");
-
-            var tasks = new[]
-            {
-                new Task(() => new NTripleFile(f1).Read(g1).Wait(), TaskCreationOptions.LongRunning),
-                new Task(() => new NTripleFile(f2).Read(g2).Wait(), TaskCreationOptions.LongRunning),
-                new Task(() => new NTripleFile(f3).Read(g3).Wait(), TaskCreationOptions.LongRunning),
-                new Task(() => new NTripleFile(f4).Read(g4).Wait(), TaskCreationOptions.LongRunning)
+            var tasks = new[] {
+                DelayedDataRead(CopyDataFile(data, 1), rdf, 1),
+                DelayedDataRead(CopyDataFile(data, 1), rdf, 2),
+                DelayedDataRead(CopyDataFile(data, 1), rdf, 3),
+                DelayedDataRead(CopyDataFile(data, 1), rdf, 4),
             };
-            
+
             //start in fast-loop so they run at same time.
-            foreach (var item in tasks){ item.Start(); }
+            foreach (var item in tasks){item.Start();}
 
             Task.WaitAll(tasks);
+            
+            var g1 = rdf.GetSelfGraph(rdf.BlankSelf("g1"));
+            var g2 = rdf.GetSelfGraph(rdf.BlankSelf("g2"));
+            var g3 = rdf.GetSelfGraph(rdf.BlankSelf("g3"));
+            var g4 = rdf.GetSelfGraph(rdf.BlankSelf("g4"));
 
             //138 quads per graph.
-            Assert.AreEqual(138, g1.Query.Count);
-            Assert.AreEqual(138, g2.Query.Count);
-            Assert.AreEqual(138, g3.Query.Count);
-            Assert.AreEqual(138, g4.Query.Count);
+            Assert.AreEqual(138, g1.Query.Count, "Count for graph-1");
+            Assert.AreEqual(138, g2.Query.Count, "Count for graph-2");
+            Assert.AreEqual(138, g3.Query.Count, "Count for graph-3");
+            Assert.AreEqual(138, g4.Query.Count, "Count for graph-4");
             
             //the nodes in doc, and extras for graphs.
             var expectedCount = 80 + //normal nodes.
@@ -127,7 +110,25 @@ namespace kwd.RdfSeed.Tests.Core
             var stats = rdf.Stats();
             Assert.AreEqual(expectedCount, stats.TotalNodes, "no dupe nodes");
 	    }
-        
+
+	    private FileInfo CopyDataFile(FileInfo srcFile, int idx)
+	    {
+		    var f = Files.AppDataDir
+			    .GetFile(nameof(NodeFactoryTests), $"f{idx}.nt");
+		    return srcFile.CopyTo(f, true);
+	    }
+
+	    private Task DelayedDataRead(FileInfo srcFile, IRdfData rdf, int id)
+	    {
+		    return new Task(() =>
+		    {
+			    var g = rdf.GetSelfGraph(rdf.BlankSelf($"g{id}"));
+			    using var rd = srcFile.OpenText();
+			    NTripleFile.Read(g, rd).Wait();
+
+		    }, TaskCreationOptions.LongRunning);
+	    }
+
         [TestMethod]
         public void UseBuiltinTypes()
         {
@@ -215,7 +216,7 @@ namespace kwd.RdfSeed.Tests.Core
             var f = new NodeFactory(textNode, new LiteralNodeMap());
 
             //no lang for normal node.
-            var the = f.Literal("The");
+            var the = f.New("The");
             Assert.AreEqual("The", the.Value);
             Assert.AreEqual(XMLSchema.String, the.ValueType.DataType, "typed as a string");
 
@@ -230,8 +231,8 @@ namespace kwd.RdfSeed.Tests.Core
         {
             var f = new NodeFactory();
 
-            var g1 = f.BlankGraph();
-            var g2 = f.BlankGraph("g2");
+            var g1 = f.BlankSelf();
+            var g2 = f.BlankSelf("g2");
 
             Assert.IsTrue(g1.IsSelfScoped());
             Assert.IsTrue(g1.Label.StartsWith(NodeFactory.BlankGraphPrefix));
@@ -245,9 +246,9 @@ namespace kwd.RdfSeed.Tests.Core
         {
             var f = new NodeFactory();
 
-            var n1 = f.BlankGraph("g1");
+            var n1 = f.BlankSelf("g1");
 
-            var n2 = f.BlankGraph("g1");
+            var n2 = f.BlankSelf("g1");
 
             Assert.AreEqual(n1, n2);
         }
@@ -256,7 +257,7 @@ namespace kwd.RdfSeed.Tests.Core
         public void BlankNodes()
         {
             var f = new NodeFactory();
-            var g = f.BlankGraph();
+            var g = f.BlankSelf();
             var labeled = f.Blank(g, "anon");
             Assert.IsTrue(labeled.GetValueString().EndsWith("anon"), "Expect blank with label.");
 
@@ -278,8 +279,8 @@ namespace kwd.RdfSeed.Tests.Core
             //blanks in a scope can be found via same label.
             // but different scope, with same label in not the same blank.
 
-            var g1 = f.BlankGraph();
-            var g2 = f.BlankGraph();
+            var g1 = f.BlankSelf();
+            var g2 = f.BlankSelf();
 
             var b1 = f.Blank(g1, "A");
             var b2 = f.Blank(g2, "A");
@@ -295,7 +296,7 @@ namespace kwd.RdfSeed.Tests.Core
         {
             var f = new NodeFactory();
 
-            var g = f.BlankGraph();
+            var g = f.BlankSelf();
 
             var n1 = f.Blank(g);
             var n2 = f.Blank(g, n1.Value.Label);
@@ -307,7 +308,7 @@ namespace kwd.RdfSeed.Tests.Core
         public void Blank_NewAutoNoCollide()
         {
             var f = new NodeFactory();
-            var g = f.BlankGraph();
+            var g = f.BlankSelf();
 
             var n1 = f.Blank(g, "auto#1");
 

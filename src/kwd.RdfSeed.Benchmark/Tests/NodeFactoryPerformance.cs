@@ -50,7 +50,7 @@ namespace kwd.RdfSeed.Benchmark.Tests
         {
             var f = new NodeFactory();
             for (var i = 0; i < 100; i++)
-                f.Literal(i.ToString());
+                f.New(i.ToString());
         }
 
         [Benchmark(Description = "100 new double nodes")]

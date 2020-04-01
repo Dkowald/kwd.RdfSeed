@@ -1,18 +1,17 @@
 ﻿using System.Linq;
-
 using kwd.RdfSeed.Query;
 using kwd.RdfSeed.Serialize.NTriple;
 using kwd.RdfSeed.Tests.TestHelpers;
-
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace kwd.RdfSeed.Tests.Samples
+namespace kwd.RdfSeed.Tests.Samples.General
 {
 	/// <summary>
-	/// Sample working with the union graph
+	/// Sample using the ordering and isolation in graphs
+	/// to provide Settings with overrides.
 	/// </summary>
 	[TestClass]
-	public class WorkingWithGraph
+	public class SettingsDataOverride
 	{
 		private void LoadSettings(IRdfData rdf)
 		{
@@ -34,8 +33,10 @@ namespace kwd.RdfSeed.Tests.Samples
 			//schema
 			var level = rdf.Uri("app:Log#Level");
 
-			//create graph with baseSettings as main and other data.
+			//create full graph with baseSettings as main.
 			var g = rdf.GetBlankGraph("baseSettings");
+
+			//log level for Microsoft; using base / default.
 			g.Query
 				.For(rdf, "app:Logger#Microsoft").ToArray()
 				.Value<string>(level, out var logLevel)
@@ -53,9 +54,10 @@ namespace kwd.RdfSeed.Tests.Samples
 			//schema
 			var level = rdf.Uri("app:Log#Level");
 
-			//create graph with debugSettings and all.
+			//create full graph with debugSettings as main.
 			var g = rdf.GetBlankGraph("debugSettings");
 
+			//log level for Microsoft; using base / default.
 			g.Query
 				.For(rdf, "app:Logger#Microsoft")
 				.ToArray()
@@ -63,30 +65,6 @@ namespace kwd.RdfSeed.Tests.Samples
 
 			Assert.AreEqual("Information", logLevel,
 				"Using debug setting");
-		}
-
-		[TestMethod]
-		public void IsolatedFromOtherGraphs()
-		{
-			var rdf = RdfDataFactory.CreateDefault();
-			
-			//Add 2 graphs.
-			rdf.Update.From(rdf.BlankGraph("g1"))
-				.Let(out var g1Id)
-				.Then()
-				.From(rdf.BlankGraph("g2")).Let(out var g2Id);
-
-			//update g1
-			var g1 = rdf.GetFullGraph(g1Id);
-
-			var g2 = rdf.GetFullGraph(g2Id);
-			g2.Assert(g2.Uri("app:me"), g2.Uri("app:update"), g2.New(true));
-
-			Assert.AreEqual(0, g1.Query.Count,
-				"Update in graph2 not reflected in graph1 snapshot");
-
-			Assert.AreEqual(1, g2.Query.Count, 
-				"Update in graph 2 is available");
 		}
 	}
 }

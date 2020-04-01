@@ -6,19 +6,37 @@ NTriple(https://www.w3.org/TR/n-triples/) files.
 At this stage the focus is on an efficient in-memory
 Rdf data store, other serializations may come later.
 
-The NTripple serializer can be used directly to 
-load (and save) a Graph in .nt format.
+An NTripple file loads triple data into a specific Graph
 ```cs
+//Load a sample N-triple file
 var rdf = RdfDataFactory.CreateNoLock();
 
 var file = SampleFile();
 
-var ntFile = new NTripleFile(file);
-var g = rdf.GetGraph(rdf.Uri(file.AsUri()));
+var g = rdf.GetBlankGraph();
 
-//Load some data
-ntFile.Read(g).Wait();
+//Read file data into the graph g
+new NTripleFile(file).Read(g).Wait();
 
-//Save some data
-ntFile.Write(g).Wait();
+var tripleCount = g.Query.Count;
+Assert.IsTrue(tripleCount > 0, "Loaded some data");
+```
+
+Similarly, can save a graph to a NTripple file
+```cs
+//Write a sample N-triple file
+var file = Files.AppDataDir.GetFile(
+    nameof(UsingNTripleFile), nameof(WriteAFile) + ".nt");
+
+file.EnsureDelete();
+
+var rdf = RdfDataFactory.CreateNoLock();
+var g = rdf.GetBlankGraph();
+
+g.Assert(g.Uri("test:sub"), g.Uri("test:pred"), g.Literal("a name"));
+
+new NTripleFile(file).Write(g).Wait();
+
+Assert.IsTrue(file.Exists() && file.Length > 0, 
+    "File created with some data");
 ```

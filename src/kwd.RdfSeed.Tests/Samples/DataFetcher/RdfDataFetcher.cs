@@ -32,7 +32,7 @@ namespace kwd.RdfSeed.Tests.Samples.DataFetcher
 			_rdf = rdf;
 			BackingFile = _rdf.Uri("sys:/backingFile");
 
-			if(!_rdf.Mappings.Any(x => x is FileInfoNodeMap))
+			if(!_rdf.Stats().Mappings.Any(x => x is FileInfoNodeMap))
 				throw new Exception(
 					$"Must include node map {nameof(FileInfoNodeMap)}");
 		}
@@ -59,13 +59,13 @@ namespace kwd.RdfSeed.Tests.Samples.DataFetcher
 		{
 			var id = _rdf.Uri(file.Value.AsUri());
 
-			var g = _rdf.GetFullGraph(id);
+			var g = _rdf.GetSelfGraph(id);
 
 			g.Clear();
 			await new NTripleFile(file.Value)
 				.Read(g);
 
-			_rdf.GetSystem()
+			_rdf.GetSelfGraph(_rdf.System)
 				.Update
 				.For(id).With(BackingFile)
 				.Set(file);

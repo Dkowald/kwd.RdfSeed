@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using kwd.RdfSeed.Core;
 using kwd.RdfSeed.Core.Nodes;
 using kwd.RdfSeed.Core.Nodes.Builtin;
@@ -175,6 +176,64 @@ namespace kwd.RdfSeed.Query
 		/// </summary>
 		public static IEnumerable<Quad> IsValue(this IEnumerable<Quad> self, IEnumerable<Quad> quads)
 			=> self.Where(x =>  quads.Any(q => q.Object == x.Object));
+		#endregion
+
+		#region Get
+		/// <summary>Get all values of type <typeparamref name="T"/>.</summary>
+		/// <exception cref="TypeMustNotBeANode"></exception>
+		public static T[] Get<T>(this IEnumerable<Quad> self) 
+			where T:notnull
+		 => TypeMustNotBeANode.Check<T>() ? 
+			 self.Where(x => x.Object is Node<T>)
+				 .Select(x => ((Node<T>) x.Object).Value)
+				 .ToArray(): throw new TypeMustNotBeANode(typeof(T));
+
+		/// <summary>
+		/// Get the T value(s) from the given set of Quads;
+		/// Returns the original items.
+		/// </summary>
+		public static IReadOnlyList<Quad> Get<T>(this IEnumerable<Quad> self,
+			out T[] result) where T:notnull
+		{
+			TypeMustNotBeANode.Verify<T>();
+				
+			var ro = self.Ro();
+			result = ro.Get<T>().ToArray();
+				
+			return ro;
+		}
+
+		/// <summary>Get the Uri value(s) from the given <see cref="Quad"/>'s</summary>
+		public static string[] GetUri(this IEnumerable<Quad> self)
+			=> self.Where(x => x.Object is UriNode)
+				.Select(x => ((UriNode)x.Object).Uri)
+				.ToArray();
+
+		/// <summary>Get the Uri Value(s) return the original items</summary>
+		public static IReadOnlyList<Quad> GetUri(this IEnumerable<Quad> self, out string[] result)
+		{
+			var ro = self.Ro();
+
+			result = ro.GetUri().ToArray();
+
+			return ro;
+		}
+
+		/// <summary>Get the blank nodes</summary>
+		public static BlankNode[] GetBlanks(this IEnumerable<Quad> self)
+			=> self.Where(x => x.Object is BlankNode)
+				.Select(x => (BlankNode) x.Object)
+				.ToArray();
+
+		/// <summary>Get the blank nodes (inline)</summary>
+		public static IReadOnlyList<Quad> GetBlanks(this IEnumerable<Quad> self, out BlankNode[] result)
+		{
+			var ro = self.Ro();
+
+			result = ro.GetBlanks();
+
+			return ro;
+		}
 		#endregion
 	}
 }

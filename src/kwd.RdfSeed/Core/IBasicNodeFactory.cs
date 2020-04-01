@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+
 using kwd.RdfSeed.Core.Nodes;
 using kwd.RdfSeed.Core.Nodes.Builtin;
 using kwd.RdfSeed.Errors;
@@ -30,9 +30,7 @@ namespace kwd.RdfSeed.Core
 		/// </summary>
 		UriNode Uri(ReadOnlySpan<char> uriValue);
 
-		/// <summary>
-		/// The (current) set of current node mappings.
-		/// </summary>
-		IReadOnlyCollection<NodeMap> Mappings { get; }
+		/// <summary>General statistics for diagnostics</summary>
+		NodeFactoryStats Stats();
 	}
 }

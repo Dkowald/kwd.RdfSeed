@@ -83,7 +83,7 @@ namespace kwd.RdfSeed.Query
 			IBasicNodeFactory f,
 			IEnumerable<string> literals)
 		{
-			var nodes = literals.Select(x => f.Literal(x));
+			var nodes = literals.Select(x => f.New(x));
 			return self.Where(x => nodes.Contains(x.Object));
 		}
 
@@ -93,7 +93,7 @@ namespace kwd.RdfSeed.Query
 			IBasicNodeFactory f,
 			params string[] literals)
 		{
-			var nodes = literals.Select(x => f.Literal(x));
+			var nodes = literals.Select(x => f.New(x));
 			return self.Where(x => nodes.Contains(x.Object));
 		}
 

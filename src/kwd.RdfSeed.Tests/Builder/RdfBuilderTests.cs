@@ -7,7 +7,6 @@ using kwd.RdfSeed.Core.Nodes;
 using kwd.RdfSeed.Core.Nodes.Builtin;
 using kwd.RdfSeed.Query;
 using kwd.RdfSeed.RdfModel;
-using kwd.RdfSeed.TypedNodes;
 using kwd.RdfSeed.Util;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -24,7 +23,7 @@ namespace kwd.RdfSeed.Tests.Builder
             var g = rdf.GetBlankGraph("test");
             g.Update
 	            .For("app:test", out var test)
-	            .With("app:name", out var aName).Assert("fred");
+	            .With("app:name", out var aName).Add("fred");
 
             g.Update
 	            .For(test).With(aName).Remove<string>();
@@ -61,8 +60,8 @@ namespace kwd.RdfSeed.Tests.Builder
             // _:2 rdfs:rest rsf:nil
             g.For(rdf.Uri("x:sub"))
                 .Let(out var listStart)
-                .List(rdf.L("one"), rdf.L("two"), rdf.L("three"))
-                .With(rdf.Uri("x:p")).Add(rdf.Literal("Extra data on last item"))
+                .List(rdf.New("one"), rdf.New("two"), rdf.New("three"))
+                .With(rdf.Uri("x:p")).Add(rdf.New("Extra data on last item"))
                 //And jump back to starting subject.
                 .ThenFor(listStart);
 
@@ -79,21 +78,21 @@ namespace kwd.RdfSeed.Tests.Builder
         public void AddWithUpDownAndLet()
         {
             var f = new NodeFactory();
-            var store = new RdfData(f);
+            var rdf = new RdfData(f);
 
-            var gId = f.BlankGraph("g1");
-            var g = store.GetGraph(gId).Update;
+            var gId = f.BlankSelf("g1");
+            var g = rdf.GetGraph(gId).Update;
 
             // _:1 x:p1 "1".
             g.ForBlank("1", out _)
                 .With(f.Uri("x:p1"))
-                .Add(f.L("1"))
+                .Add(f.New("1"))
                 // _:1 x:p2 "123"
-                .Then().With(f.Uri("x:p2")).Add(f.L("123"))
+                .Then().With(f.Uri("x:p2")).Add(f.New("123"))
                 // _:1 x:p3 _:2 
                 // _:2 x:p3 "fred" 
                 .Then().With(f.Uri("x:p3")).To(f.Blank(gId))
-                .With(f.Uri("x:p3")).Add(f.L("fred"))
+                .With(f.Uri("x:p3")).Add(f.New("fred"))
                 //get ref to _:2
                 .Then().Let(out _);
         }
@@ -113,7 +112,7 @@ namespace kwd.RdfSeed.Tests.Builder
 	            .With(rdf.Uri("x:phone"))
                 .To(rdf.Blank(graphId))
                 .With(rdf.Uri("x:home"))
-                .Add(rdf.L("123"), rdf.New(123));
+                .Add(rdf.New("123"), rdf.New(123));
 
             Assert.AreEqual(3, rdf.Query.Count);
 

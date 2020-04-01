@@ -44,6 +44,12 @@ namespace kwd.RdfSeed.Serialize.NTriple
                 Next(token);
                 token = NTripleTokenizer.NextToken(token.Rest);
             }
+
+            if(_subject != null ||
+               _predicate != null ||
+               _object != null ||
+               _objectParts != null)
+	            throw new Exception("Non terminated triple line.");
         }
 
         /// <summary>

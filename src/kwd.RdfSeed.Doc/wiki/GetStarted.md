@@ -20,7 +20,7 @@ var brazil = rdf.Uri("http://www.heml.org/docs/samples/heml/2002-05-29/brazil.xm
 var name = sample.Query
     .For(brazil)
     .With(rdf, RDFS.Label)
-    .SelectValues<string>()
+    .Get<string>()
     .FirstOrNull();
 
 //Add some data.

@@ -23,38 +23,34 @@ namespace kwd.RdfSeed.Core
     /// </remarks>
     public class Graph : IGraphNodeFactory
     {
-        private readonly IEnumerable<Quad> _qryGraphQuads;
-        private readonly IReadOnlyCollection<Quad> _includedQuads;
+        private readonly Quad[] _includedQuads;
         private readonly IRdfData _rdf;
 
         /// <summary>Create graph with Id and data from other graphs</summary>
         public Graph(IRdfData rdf, 
 	        Node<UriOrBlank> id,
-            IEnumerable<Quad> qryGraphQuads,
 	        IEnumerable<Node<UriOrBlank>> other)
         {
 	        _rdf = rdf;
-	        
-	        _qryGraphQuads = qryGraphQuads;
 
 	        Id = id;
-	        Other = other.ToList();
+	        Other = other.Distinct()
+		        .Where(x => x != id)
+		        .ToArray();
 
-	        _includedQuads = rdf.Query
-		        .Where(x => Other.Contains(x.Graph))
-		        .ToList();
+	        _includedQuads = rdf.GraphData(Other);
         }
 
         /// <summary>The graph id / subject</summary>
         public Node<UriOrBlank> Id { get; }
 
 		/// <summary>The other graph(s) making up this</summary>
-		public IReadOnlyCollection<Node<UriOrBlank>> Other { get; }
+		public Node<UriOrBlank>[] Other { get; }
 
 		/// <summary>Assert / add a new triple for this graph</summary>
-		public Graph Assert(Node<UriOrBlank> subject, UriNode predicate, Node @object)
+		public Graph Assert(Node<UriOrBlank> subject, UriNode predicate, Node @object, out Quad quad)
         {
-	        _rdf.Assert(Id, subject, predicate, @object);
+	        _rdf.Assert(Id, subject, predicate, @object, out quad);
 	        return this;
         }
         
@@ -79,9 +75,10 @@ namespace kwd.RdfSeed.Core
 
         /// <summary>
         /// List all current quads in this graph.
+        /// Quads from  main graph (<see cref="Id"/>) are first.
         /// </summary>
-        public IReadOnlyCollection<Quad> Query =>
-            _qryGraphQuads.Union(_includedQuads).ToArray();
+        public IReadOnlyList<Quad> Query =>
+            _rdf.GraphData(Id).Union(_includedQuads).ToArray();
 
         /// <summary>Convert graph to a self-only graph</summary>
         public Graph SelfOnly() => _rdf.GetSelfGraph(Id);
@@ -109,7 +106,8 @@ namespace kwd.RdfSeed.Core
 			=> _rdf.Blank(Id, label);
 
 		/// <inheritdoc />
-		public IReadOnlyCollection<NodeMap> Mappings => _rdf.Mappings;
+		public NodeFactoryStats Stats()
+			=> _rdf.Stats();
 
 		#endregion
     }

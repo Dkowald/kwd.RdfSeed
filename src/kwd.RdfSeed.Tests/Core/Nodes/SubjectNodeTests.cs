@@ -11,7 +11,7 @@ namespace kwd.RdfSeed.Tests.Core.Nodes
         public void SubjectCanBeUriOrBlank()
         {
             var f = new NodeFactory();
-            var g = f.BlankGraph();
+            var g = f.BlankSelf();
             var s1 = f.Blank(g, "_:node1");
             Assert.AreEqual("node1", s1.Value.Label);
             

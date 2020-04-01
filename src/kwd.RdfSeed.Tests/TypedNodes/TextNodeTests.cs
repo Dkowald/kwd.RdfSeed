@@ -1,5 +1,6 @@
 ﻿using kwd.RdfSeed.Core;
 using kwd.RdfSeed.TypedNodes;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace kwd.RdfSeed.Tests.TypedNodes
@@ -7,6 +8,16 @@ namespace kwd.RdfSeed.Tests.TypedNodes
     [TestClass]
     public class TextNodeTests
     {
+        [TestMethod]
+	    public void LiteralMapsToString()
+	    {
+		    var f = new NodeFactory(new LiteralNodeMap());
+
+		    var node = f.New("A literal ");
+
+            Assert.IsTrue(node.ValueType is LiteralNodeMap);
+	    }
+
         [TestMethod]
         public void ReuseSame()
         {

@@ -10,21 +10,20 @@ using kwd.RdfSeed.Query;
 using kwd.RdfSeed.RdfModel;
 using kwd.RdfSeed.Serialize.NTriple;
 using kwd.RdfSeed.Tests.TestHelpers;
-using kwd.RdfSeed.TypedNodes;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace kwd.RdfSeed.Tests.Samples
+namespace kwd.RdfSeed.Tests.Samples.General
 {
 	/// <summary>
 	/// A series of samples building a more complex object.
 	/// </summary>
 	[TestClass]
-    public class ModelingObjectData
+    public class AUserProfile
     {
 	    private readonly FileInfo _data =
 		    Files.AppDataDir.GetFile(
-			    nameof(ModelingObjectData), "Profile.nt");
+			    nameof(AUserProfile), "Profile.nt");
 
 	    private readonly string _myProfile = "app:/profile#me";
 
@@ -64,13 +63,13 @@ namespace kwd.RdfSeed.Tests.Samples
 		    file.Read(g).Wait();
 
             g.Update.For(g.Uri(_myProfile))
-	            .With(RDFS.Label, out _).Assert("My Name")
+	            .With(RDFS.Label, out _).Add("My Name")
 	            .Then()
-	            .With(Terms.DateModified, out _).Assert(DateTime.UtcNow)
+	            .With(Terms.DateModified, out _).Add(DateTime.UtcNow)
 	            .Then()
-	            .With(Terms.Description, out _).Assert("My basic profile data")
+	            .With(Terms.Description, out _).Add("My basic profile data")
 	            .Then()
-	            .With(Terms.AlternativeTitle, out _).Assert("ME");
+	            .With(Terms.AlternativeTitle, out _).Add("ME");
 
             file.Write(g).Wait();
 	    }
@@ -86,7 +85,7 @@ namespace kwd.RdfSeed.Tests.Samples
             //some favorites.
             g.Update
 	            .ForBlank("favs", out var favs)
-	            .With(RDF.A, out _).Assert(RDFS.List, out _)
+	            .With(RDF.A, out _).Add(RDFS.List, out _)
 	            .Then()
 	            .List(g.Uri("https://duckduckgo.com/"),
 		            g.Uri("https://inrupt.com/"),
@@ -140,7 +139,7 @@ namespace kwd.RdfSeed.Tests.Samples
 			var favsList = g.Query
 				.For(g.Id)
 				.With(g.Uri("app:favorites"))
-				.SelectBlanks()
+				.GetBlanks()
 				.First();
 			
 			//get list items.
@@ -149,24 +148,5 @@ namespace kwd.RdfSeed.Tests.Samples
 			
 			Assert.IsTrue(myFavorites.Length > 0, "Got some favorites");
 	    }
-
-        [TestMethod]
-        public void WorkingWithComplexList()
-        {
-	        var rdf = RdfDataFactory.CreateNoLock();
-
-            var g = rdf.GetGraph(rdf.BlankGraph("_:"));
-
-            var rdfs = new RdfsList(rdf, g);
-
-			//Sparse list with different types of data.
-            var root = rdfs.AddList(g.Blank(),
-	            g.Literal("a"), null, g.New(34.6));
-
-            var data = rdfs.GetList(root);
-
-            var nil = rdf.Uri(RDFS.Nil);
-            Assert.AreEqual(nil, data.ElementAt(1), "Null modeled as nil");
-        }
     }
 }

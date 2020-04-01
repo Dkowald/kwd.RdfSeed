@@ -1,9 +1,11 @@
 ﻿using System.Linq;
+
 using kwd.RdfSeed.Builder;
 using kwd.RdfSeed.Core;
 using kwd.RdfSeed.Core.Nodes;
 using kwd.RdfSeed.Query;
 using kwd.RdfSeed.TypedNodes;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace kwd.RdfSeed.Tests.Query
@@ -20,8 +22,8 @@ namespace kwd.RdfSeed.Tests.Query
 			g.Update
 				.For("app:test", out var test)
 				.With("app:name", out var aName)
-				.Assert("fred")
-				.Assert("fred", "en");
+				.Add("fred")
+				.Add("fred", "en");
 
 			g.Query.For(test)
 				.With(aName)
@@ -39,10 +41,10 @@ namespace kwd.RdfSeed.Tests.Query
 
 			g.Update
 				.For(sub)
-				.With(name).Assert("fred", "en", out _)
-				.Assert("fred-literal", out _)
+				.With(name).Add("fred", "en", out _)
+				.Add("fred-literal", out _)
 				.Then()
-				.With("app:age", out _).Assert(23, out _)
+				.With("app:age", out _).Add(23, out _)
 				.Then().Then()
 				.For("app:other", out _)
 				.With("app:friend", out _).Add(sub);
@@ -51,7 +53,7 @@ namespace kwd.RdfSeed.Tests.Query
 			var found = rdf.Query.From(g.Id)
 				.For(sub).With(name)
 				.IsType<Text>()
-				.SelectValues<Text>()
+				.Get<Text>()
 				.Single();
 			Assert.AreEqual("fred", found.Value);
 		}

@@ -32,45 +32,30 @@ namespace kwd.RdfSeed.Query
 		public static IEnumerable<Quad> LinksFor(this IEnumerable<Quad> self, Node<UriOrBlank> subject)
 			=> self.For(subject).IsType<UriOrBlank>();
 
-		/// <summary>
-		/// Subject links to complex properties.
-		/// All quads with a blank-node subject as the value.
-		/// </summary>
-		public static IEnumerable<Quad> ComplexPropertiesFor(this IEnumerable<Quad> self, Node<UriOrBlank> subject)
-			=>self.For( (Node)subject).IsBlank();
-
-		/// <summary>Read all <typeparamref name="T"/> values</summary>
-		/// <exception cref="TypeMustNotBeANode"></exception>
-		public static IEnumerable<Quad> Values<T>(this IEnumerable<Quad> self, out T[] data)
-		where T:notnull
-		{
-			var ro = self as IReadOnlyCollection<Quad> ?? self.ToArray();
-			data = ro.SelectValues<T>().ToArray();
-			return ro;
-		}
+		#region Value
 
 		/// <summary>Read the first <typeparamref name="T"/> value.</summary>
 		/// <exception cref="TypeMustNotBeANode"></exception>
 		/// <exception cref="ValueNotFoundError"></exception>
-		public static IEnumerable<Quad> Value<T>(this IEnumerable<Quad> self,
+		public static IReadOnlyList<Quad> Value<T>(this IEnumerable<Quad> self,
 			UriNode predicate, out T data) where T:notnull
 		{
-			var ro = self as IReadOnlyCollection<Quad> ?? self.ToArray();
+			var ro = self.Ro();
 			
 			data = ro.FirstOrNull(x => 
 				x.Predicate == predicate &&
 				x.Object is Node<T>)?.Object is Node<T> node
-					? node.Value : throw new ValueNotFoundError();
+				? node.Value : throw new ValueNotFoundError();
 
 			return ro;
 		}
 
 		/// <summary>Read the first Node of type <typeparamref name="T"/></summary>
 		/// <exception cref="TypeMustNotBeANode"></exception>
-		public static IEnumerable<Quad> ValueOptional<T>(this IEnumerable<Quad> self,
+		public static IReadOnlyList<Quad> ValueOptional<T>(this IEnumerable<Quad> self,
 			UriNode predicate, out Node<T>? data) where T:notnull
 		{
-			var ro = self as IReadOnlyCollection<Quad> ?? self.ToArray();
+			var ro = self.Ro();
 
 			data = ro.FirstOrNull(x => 
 				x.Predicate == predicate &&
@@ -78,5 +63,7 @@ namespace kwd.RdfSeed.Query
 
 			return ro;
 		}
+
+		#endregion
 	}
 }

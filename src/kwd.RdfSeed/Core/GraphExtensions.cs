@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using kwd.RdfSeed.Core.Nodes;
+using kwd.RdfSeed.Core.Nodes.Builtin;
 
 namespace kwd.RdfSeed.Core
 {
@@ -15,5 +17,9 @@ namespace kwd.RdfSeed.Core
 	    /// <returns>Number of <see cref="Quad"/> actually removed</returns>
 	    public static int Retract(this Graph self, IEnumerable<Quad> quads)
 		    => self.Retract(quads.ToArray());
+
+	    /// <summary>Assert / add a new triple for this graph</summary>
+	    public static Graph Assert(this Graph self, Node<UriOrBlank> subject, UriNode predicate, Node @object)
+		    => self.Assert(subject, predicate, @object, out _);
     }
 }

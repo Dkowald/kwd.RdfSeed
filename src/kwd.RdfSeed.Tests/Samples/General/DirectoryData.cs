@@ -10,11 +10,10 @@ using kwd.RdfSeed.Core;
 using kwd.RdfSeed.Query;
 using kwd.RdfSeed.Serialize.NTriple;
 using kwd.RdfSeed.Tests.TestHelpers;
-using kwd.RdfSeed.TypedNodes;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace kwd.RdfSeed.Tests.Samples
+namespace kwd.RdfSeed.Tests.Samples.General
 {
     /// <summary>
     /// A sample to build and query info about file system.
@@ -39,7 +38,7 @@ namespace kwd.RdfSeed.Tests.Samples
 
             g.Update.For(g.Uri(_rootFolder.AsUri()))
 	            .With("app:root", out _)
-	            .Assert(true)
+	            .Add(true)
 	            .Add(g.Uri(_rootFolder.AsUri()));
 
             var q = new Queue<DirectoryInfo>();
@@ -64,7 +63,7 @@ namespace kwd.RdfSeed.Tests.Samples
             //load data.
             if(!_dataFile.Exists()) 
 	            throw new Exception("Data file needs to be pre-built");
-            var graph = rdf.GetGraph(rdf.BlankGraph("g1"));
+            var graph = rdf.GetGraph(rdf.BlankSelf("g1"));
             new NTripleFile(_dataFile).Read(graph).Wait();
 
             //predicates.
@@ -72,8 +71,8 @@ namespace kwd.RdfSeed.Tests.Samples
             
             var rootFolder = graph.Query
 	            .With(root)
-                .SelectUris()
-                .Single().Uri;
+                .GetUri()
+                .Single();
 
             var expected = Uri.EscapeUriString(_rootFolder.AsUri().ToString());
 
@@ -85,8 +84,8 @@ namespace kwd.RdfSeed.Tests.Samples
         {
             var contains = f.Uri("app:contains");
             var itemType = f.Uri("app:type");
-            var itemTypeFolder = f.Literal("folder");
-            var itemTypeFile = f.Literal("file");
+            var itemTypeFolder = f.New("folder");
+            var itemTypeFile = f.New("file");
 
             var lastModify = f.Uri(PosixStat.LastModified);
             var size = f.Uri(PosixStat.Size);
@@ -130,10 +129,10 @@ namespace kwd.RdfSeed.Tests.Samples
                 catch (UnauthorizedAccessException ex)
                 {
                     g.For(subject)
-                        .With("app:AccessGranted", out _).Assert(false)
+                        .With("app:AccessGranted", out _).Add(false)
                         .Then().With("app:error", out _)
-                        .Assert(ex.Message)
-                        .Assert(ex);
+                        .Add(ex.Message)
+                        .Add(ex);
                 }
             }
         }
